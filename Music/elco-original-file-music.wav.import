@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/elco-original-file-music.wav-6d5248ea313998f5449b72002e73799d.sample"
+
+[deps]
+
+source_file="res://Music/elco-original-file-music.wav"
+dest_files=[ "res://.import/elco-original-file-music.wav-6d5248ea313998f5449b72002e73799d.sample" ]
+
+[params]
+
+force/8_bit=true
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100.0
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0

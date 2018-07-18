@@ -15,7 +15,7 @@
 [ext_resource path="res://Scene/Cosmetic.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scene/Player.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Art/Cosmetic/Block.png" type="Texture" id=15]
-[ext_resource path="res://Music/BeepBox-Song.wav" type="AudioStream" id=16]
+[ext_resource path="res://Music/elco-original-file-music.wav" type="AudioStream" id=16]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -152,6 +152,7 @@ position = Vector2( 28, 58 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 2 )
 animation = "default"
+frame = 4
 playing = true
 _sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
 __meta__ = {
@@ -163,6 +164,7 @@ __meta__ = {
 scale = Vector2( 0.9, 0.9 )
 frames = SubResource( 3 )
 animation = "default"
+frame = 4
 playing = true
 _sections_unfolded = [ "Transform", "Visibility" ]
 
@@ -174,6 +176,7 @@ position = Vector2( 45, 58 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 2 )
 animation = "default"
+frame = 4
 playing = true
 _sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
 __meta__ = {
@@ -185,6 +188,7 @@ __meta__ = {
 scale = Vector2( 0.9, 0.9 )
 frames = SubResource( 3 )
 animation = "default"
+frame = 4
 playing = true
 _sections_unfolded = [ "Transform", "Visibility" ]
 
@@ -196,6 +200,7 @@ position = Vector2( 61, 58 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 2 )
 animation = "default"
+frame = 4
 playing = true
 _sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
 __meta__ = {
@@ -207,6 +212,7 @@ __meta__ = {
 scale = Vector2( 0.9, 0.9 )
 frames = SubResource( 3 )
 animation = "default"
+frame = 4
 playing = true
 _sections_unfolded = [ "Transform", "Visibility" ]
 
