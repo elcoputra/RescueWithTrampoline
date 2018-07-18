@@ -3,17 +3,16 @@ using System;
 
 public class CaoinCollectable : RigidBody2D
 {
-    // Member variables here, example:
-    // private int a = 2;
-    // private string b = "textvar";
+ 
+    Timer coinHilang;
 
     public override void _Ready()
     {
-        // Called every time the node is added to the scene.
-        // Initialization here
+    
+        coinHilang = (Timer) GetNode("TimerCoin");
+        coinHilang.Start();
         
     }
-
 
     public void _on_CoinArea_area_entered(Godot.Area2D area)
     {
@@ -21,11 +20,15 @@ public class CaoinCollectable : RigidBody2D
         if(area.Name == "PlayerArea")
         {
             QueueFree();
-            // GD.Print("QueueFree");
         }
         
     }
 
+    public void _on_TimerCoin_timeout()
+    {
+        QueueFree();
+            // GD.Print("QueueFree");
+    }
 //    public override void _Process(float delta)
 //    {
 //        // Called every frame. Delta is time since last frame.

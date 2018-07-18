@@ -3,9 +3,6 @@ using System;
 
 public class Main : Node2D
 {
-    // Member variables here, example:
-    // private int a = 2;
-    // private string b = "textvar";
     [Export] 
     public PackedScene npc;
     public int score;
@@ -14,6 +11,7 @@ public class Main : Node2D
     Label LabelCoin;
     Label WaveLabel;
     Panel PanelGameOver;
+    AudioStreamPlayer2D MusicMenu;
     private Random rand = new Random();
 
     KinematicBody2D player;
@@ -23,27 +21,19 @@ public class Main : Node2D
 
     public override void _Ready()
     {
-        // Called every time the node is added to the scene.
-        // Initialization here
-    
-    player = (KinematicBody2D) GetNode("Player");
-    npc = (PackedScene)ResourceLoader.Load("res://Scene/NPCJatuh1.tscn");
-    NpcTimer = (Timer) GetNode("NpcTimer");
-    NpcTimer.Stop();
-    WaveLabel = (Label) GetNode("GUI/WaveLabel");
-    PanelGameOver = (Panel) GetNode("GameOver");
-    PanelGameOver.Visible = false;
+        MusicMenu = (AudioStreamPlayer2D) GetNode("MusicMenu");
+
+        player = (KinematicBody2D) GetNode("Player");
+        npc = (PackedScene)ResourceLoader.Load("res://Scene/NPCJatuh1.tscn");
+        NpcTimer = (Timer) GetNode("NpcTimer");
+        NpcTimer.Stop();
+        WaveLabel = (Label) GetNode("GUI/WaveLabel");
+        PanelGameOver = (Panel) GetNode("GameOver");
+        PanelGameOver.Visible = false;
 
 
 
-    player.Visible = false;
-    
-
-
-        
-
-        
-        
+        player.Visible = false;    
     }
 
     private float RandRand(float min , float max)
@@ -78,8 +68,6 @@ public class Main : Node2D
     {
         var NpcInstance = (RigidBody2D) npc.Instance();
         AddChild(NpcInstance);
-    
-      
 
        var direction = NpcSpawnLocation.Rotation + Mathf.Pi / 2;
 
@@ -103,10 +91,6 @@ public class Main : Node2D
 
    public void wave()
    {
-
-
-
-
        switch(score)
        {
            case 5:
@@ -155,13 +139,10 @@ public class Main : Node2D
            break;
            
        }
-
-
    }
 
    public void _on_LantaiLifeDetect_area_entered(Godot.Area2D lantaiDetectLife)
    {
-
        minusNyawa += 1;
 
        if(lantaiDetectLife.Name == "LifeDetect")
@@ -182,9 +163,7 @@ public class Main : Node2D
            {  
                var guiLope3 = (AnimatedSprite) GetNode("GUI/life/life1");
                guiLope3.Visible = false;
-           }
-           
-           
+           }     
        }
    }
 
@@ -199,6 +178,7 @@ public class Main : Node2D
         var menuGui = (Node2D) GetNode("Menu");
         menuGui.Visible = false;
 
+        MusicMenu.Stop();
    }
 
    public void _on_btn_startGameOver_button_down()
@@ -237,13 +217,11 @@ public class Main : Node2D
 
    public void GameOver()
    {   
-       
        Label LabelYourScore = (Label) GetNode("GameOver/YourScore/YourScoreValue");
        LabelYourScore.Text = score.ToString();
        player.Visible = false;
        NpcTimer.Stop();
-       PanelGameOver.Visible = true;
-       
+       PanelGameOver.Visible = true;   
    }
 
 

@@ -3,10 +3,6 @@ using System;
 
 public class NPCJatuh1 : RigidBody2D
 {
-    // Member variables here, example:
-    // private int a = 2;
-    // private string b = "textvar";
-
     AnimatedSprite animRigid;
 
     Timer TimerCoin;
@@ -18,8 +14,6 @@ public class NPCJatuh1 : RigidBody2D
 
     public override void _Ready()
     {
-        // Called every time the node is added to the scene.
-        // Initialization here
 
         CoinCollectable = (PackedScene)ResourceLoader.Load("res://Scene/CaoinCollectable.tscn");
 
@@ -32,24 +26,18 @@ public class NPCJatuh1 : RigidBody2D
         
     }
 
-   public override void _Process(float delta)
-   {
-       // Called every frame. Delta is time since last frame.
-       // Update game logic here.
+//    public override void _Process(float delta)
+//    {
        
-   }
+//    }
 
    public void _on_Area2D_area_entered(Godot.Area2D area)
    {
        animRigid.Play("Idle");
     //    GD.Print(area.Name);
 
-       
-
        if(area.Name == "Trampoline")
        {
-           
-
            if(status == 0)
            {
                status = 1;
@@ -60,13 +48,10 @@ public class NPCJatuh1 : RigidBody2D
                TimerCoin.Start();
                TimerDestroyCoin.Start();
            }
-
        }
 
        if(area.Name == "LantaiArea2D")
        {
-           
-
            if (status == 0)
            {
                status = 2;
@@ -78,14 +63,11 @@ public class NPCJatuh1 : RigidBody2D
            }
        }
        
-
    }
-
    public void _on_Area2D_area_exited(Godot.Object area)
    {
        animRigid.Play("default");
    }
-
 
    public void _on_TimerCoin_timeout()
    {
@@ -120,12 +102,7 @@ public class NPCJatuh1 : RigidBody2D
            VarLiveDetect.CallDeferred("set_monitoring", false);
            
        }
-
        
    }
-
-
-
-
-   
+ 
 }

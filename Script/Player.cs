@@ -24,18 +24,10 @@ public class Player : KinematicBody2D
 
     }
 
-
-
-
-
     // public override void _Process(float delta)
     // {
 
     // }
-
-
-
-
 
 
     public void getInput()
@@ -44,8 +36,6 @@ public class Player : KinematicBody2D
         bool right = Input.IsActionPressed("ui_right");
         bool left = Input.IsActionPressed("ui_left");
         bool jump = Input.IsActionPressed("ui_jump");
-
-        
 
         if (jump && IsOnFloor())
         {
@@ -89,11 +79,6 @@ public class Player : KinematicBody2D
             }
     }
 
-
-
-
-
-
     public override void _PhysicsProcess(float delta)
     {
         getInput();
@@ -104,12 +89,6 @@ public class Player : KinematicBody2D
         }
         velocity = MoveAndSlide(velocity, new Vector2(0, -1));
     }
-
-
-
-
-
-
 
     public void _on_PlayerArea_area_entered(Godot.Area2D area)
     {
