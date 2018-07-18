@@ -1,0 +1,74 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Art/Fonts/homespun.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scene/CoinGUI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Art/Cosmetic/Coin/COIN00.png" type="Texture" id=3]
+[ext_resource path="res://Art/Cosmetic/Coin/COIN01.png" type="Texture" id=4]
+[ext_resource path="res://Art/Cosmetic/Coin/COIN02.png" type="Texture" id=5]
+[ext_resource path="res://Art/Cosmetic/Coin/COIN03.png" type="Texture" id=6]
+[ext_resource path="res://Art/Cosmetic/Coin/COIN04.png" type="Texture" id=7]
+[ext_resource path="res://Art/Cosmetic/Coin/COIN05.png" type="Texture" id=8]
+[ext_resource path="res://Art/Cosmetic/Coin/COIN06.png" type="Texture" id=9]
+[ext_resource path="res://Art/Cosmetic/Coin/COIN07.png" type="Texture" id=10]
+[ext_resource path="res://Art/Cosmetic/Coin/COIN08.png" type="Texture" id=11]
+[ext_resource path="res://Art/Cosmetic/Coin/COIN09.png" type="Texture" id=12]
+[ext_resource path="res://Art/Cosmetic/Coin/COIN10.png" type="Texture" id=13]
+[ext_resource path="res://Art/Cosmetic/Coin/COIN11.png" type="Texture" id=14]
+[ext_resource path="res://Art/Cosmetic/Coin/COIN12.png" type="Texture" id=15]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 40
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 1 )
+_sections_unfolded = [ "Font/fallback" ]
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="LabelCoin" type="Label"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 62.0
+margin_right = 293.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+text = "0"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Rect", "Size Flags", "Theme", "custom_fonts", "custom_styles" ]
+
+[node name="Coin" type="AnimatedSprite" parent="." index="0" instance=ExtResource( 2 )]
+
+position = Vector2( -41, 22 )
+frames = SubResource( 2 )
+animation = "default"
+frame = 8
+playing = true
+
+[node name="COIN12" type="Sprite" parent="Coin" index="0"]
+
+position = Vector2( 25.7612, 0.367741 )
+scale = Vector2( 0.376187, 0.376187 )
+texture = ExtResource( 15 )
+
+

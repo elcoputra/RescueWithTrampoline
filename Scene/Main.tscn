@@ -1,0 +1,803 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://Script/Main.cs" type="Script" id=1]
+[ext_resource path="res://Scene/NPCJatuh1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Art/Cosmetic/Mountain.png" type="Texture" id=3]
+[ext_resource path="res://Scene/LabelCoin.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Art/Fonts/homespun.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Art/LOPE/LOPE0.png" type="Texture" id=6]
+[ext_resource path="res://Art/LOPE/LOPE1.png" type="Texture" id=7]
+[ext_resource path="res://Art/LOPE/LOPE2.png" type="Texture" id=8]
+[ext_resource path="res://Art/LOPE/LOPE3.png" type="Texture" id=9]
+[ext_resource path="res://Art/LOPE/LOPE4.png" type="Texture" id=10]
+[ext_resource path="res://Art/LOPE/LOPE5.png" type="Texture" id=11]
+[ext_resource path="res://Scene/Platform.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scene/Cosmetic.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scene/Player.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Art/Cosmetic/Block.png" type="Texture" id=15]
+[ext_resource path="res://Music/BeepBox-Song.wav" type="AudioStream" id=16]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 20
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 200.5, 17 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 46.213, 23.769 )
+
+[sub_resource type="Curve2D" id=6]
+
+bake_interval = 5.0
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 722, -1, 0, 0, 0, 0, 60, 0 )
+}
+
+[sub_resource type="DynamicFontData" id=7]
+
+hinting = 2
+font_path = "res://Art/Fonts/homespun.ttf"
+
+[sub_resource type="DynamicFont" id=8]
+
+size = 15
+use_mipmaps = false
+use_filter = false
+font_data = SubResource( 7 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFontData" id=9]
+
+hinting = 2
+font_path = "res://Art/Fonts/homespun.ttf"
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="DynamicFont" id=10]
+
+size = 25
+use_mipmaps = false
+use_filter = false
+font_data = SubResource( 9 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Font/fallback", "Settings" ]
+
+[node name="Main" type="Node2D" index="0"]
+
+position = Vector2( -1, 0 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pause" ]
+npc = ExtResource( 2 )
+
+[node name="Mountain" type="Sprite" parent="." index="0"]
+
+modulate = Color( 0.683594, 0.683594, 0.683594, 1 )
+position = Vector2( 380.003, 199.881 )
+scale = Vector2( 3.03126, 3.03126 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="GUI" type="Node2D" parent="." index="1"]
+
+editor/display_folded = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="LabelCoin" parent="GUI" index="0" instance=ExtResource( 4 )]
+
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Rect", "Size Flags", "Theme", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="WaveLabel" type="Label" parent="GUI" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1.0
+margin_top = -1.0
+margin_right = 768.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Wave 1"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="life" type="Node2D" parent="GUI" index="2"]
+
+[node name="life1" type="AnimatedSprite" parent="GUI/life" index="0"]
+
+editor/display_folded = true
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 28, 58 )
+scale = Vector2( 0.8, 0.8 )
+frames = SubResource( 2 )
+animation = "default"
+playing = true
+_sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Life1Shadow" type="AnimatedSprite" parent="GUI/life/life1" index="0"]
+
+scale = Vector2( 0.9, 0.9 )
+frames = SubResource( 3 )
+animation = "default"
+playing = true
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="life2" type="AnimatedSprite" parent="GUI/life" index="1"]
+
+editor/display_folded = true
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 45, 58 )
+scale = Vector2( 0.8, 0.8 )
+frames = SubResource( 2 )
+animation = "default"
+playing = true
+_sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Life1Shadow" type="AnimatedSprite" parent="GUI/life/life2" index="0"]
+
+scale = Vector2( 0.9, 0.9 )
+frames = SubResource( 3 )
+animation = "default"
+playing = true
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="life3" type="AnimatedSprite" parent="GUI/life" index="2"]
+
+editor/display_folded = true
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 61, 58 )
+scale = Vector2( 0.8, 0.8 )
+frames = SubResource( 2 )
+animation = "default"
+playing = true
+_sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Life1Shadow" type="AnimatedSprite" parent="GUI/life/life3" index="0"]
+
+scale = Vector2( 0.9, 0.9 )
+frames = SubResource( 3 )
+animation = "default"
+playing = true
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Platform" parent="." index="2" instance=ExtResource( 12 )]
+
+editor/display_folded = true
+
+[node name="LantaiLifeDetect" type="Area2D" parent="Platform" index="17"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 2048
+collision_mask = 1024
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/LantaiLifeDetect" index="0"]
+
+shape = SubResource( 4 )
+
+[node name="Cosmetic" parent="." index="3" instance=ExtResource( 13 )]
+
+[node name="Player" parent="." index="4" instance=ExtResource( 14 )]
+
+position = Vector2( 379.787, 378.769 )
+
+[node name="MainCoinDetect" type="Area2D" parent="Player" index="6"]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 512
+collision_mask = 256
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/MainCoinDetect" index="0"]
+
+shape = SubResource( 5 )
+
+[node name="NpcSpawn" type="Path2D" parent="." index="5"]
+
+editor/display_folded = true
+self_modulate = Color( 0.5, 0.6, 1, 0.7 )
+position = Vector2( 0, -22 )
+curve = SubResource( 6 )
+
+[node name="NpcSpawnLocation" type="PathFollow2D" parent="NpcSpawn" index="0"]
+
+position = Vector2( 722, -1 )
+rotation = 3.14008
+offset = 0.0
+h_offset = 0.0
+v_offset = 0.0
+rotate = true
+cubic_interp = true
+loop = true
+lookahead = 4.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Menu" type="Node2D" parent="." index="6"]
+
+_sections_unfolded = [ "Visibility" ]
+
+[node name="MenuPanel" type="Panel" parent="Menu" index="0"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -13.0
+margin_top = -5.0
+margin_right = 780.0
+margin_bottom = 456.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Made" type="Label" parent="Menu/MenuPanel" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 171.0
+margin_top = 410.0
+margin_right = 590.0
+margin_bottom = 426.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 8 )
+text = "Made By KAKAKIKO (Elco Iiriansyah) With Godot Engine(C#)"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Anoncment" type="Label" parent="Menu/MenuPanel" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 191.0
+margin_top = 389.0
+margin_right = 567.0
+margin_bottom = 405.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 8 )
+text = "HighScore Not Yet Implement, Wait for 1 day more"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Move" type="Label" parent="Menu/MenuPanel" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 41.0
+margin_top = 229.0
+margin_right = 417.0
+margin_bottom = 245.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 8 )
+text = "Move : A/D Or Arrow"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Jump" type="Label" parent="Menu/MenuPanel" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 37.0
+margin_top = 252.0
+margin_right = 413.0
+margin_bottom = 268.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 8 )
+text = "Jump : Space"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="btn_start" type="Button" parent="Menu" index="1"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 214.0
+margin_top = 309.0
+margin_right = 300.0
+margin_bottom = 341.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = true
+align = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Start" type="Sprite" parent="Menu/btn_start" index="0"]
+
+position = Vector2( 43, 16 )
+scale = Vector2( 2.71875, 2.71875 )
+texture = ExtResource( 15 )
+
+[node name="Start2" type="Label" parent="Menu/btn_start" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 86.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Start"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="btn_exit" type="Button" parent="Menu" index="2"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 443.0
+margin_top = 309.0
+margin_right = 529.0
+margin_bottom = 341.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = true
+align = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Exit" type="Sprite" parent="Menu/btn_exit" index="0"]
+
+position = Vector2( 43, 16 )
+scale = Vector2( 2.71875, 2.71875 )
+texture = ExtResource( 15 )
+
+[node name="Exit2" type="Label" parent="Menu/btn_exit" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 86.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Exit"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="GameOver" type="Panel" parent="." index="7"]
+
+editor/display_folded = true
+visible = false
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 177.0
+margin_top = 48.0
+margin_right = 602.0
+margin_bottom = 335.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Visibility" ]
+
+[node name="btn_startGameOver" type="Button" parent="GameOver" index="0"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 68.0
+margin_top = 240.0
+margin_right = 154.0
+margin_bottom = 272.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = true
+align = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Start" type="Sprite" parent="GameOver/btn_startGameOver" index="0"]
+
+position = Vector2( 43, 16 )
+scale = Vector2( 2.71875, 2.71875 )
+texture = ExtResource( 15 )
+
+[node name="Start2" type="Label" parent="GameOver/btn_startGameOver" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 86.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Start"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="btn_exitGameover" type="Button" parent="GameOver" index="1"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 265.0
+margin_top = 240.0
+margin_right = 351.0
+margin_bottom = 272.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = true
+align = 1
+
+[node name="Exit" type="Sprite" parent="GameOver/btn_exitGameover" index="0"]
+
+position = Vector2( 43, 16 )
+scale = Vector2( 2.71875, 2.71875 )
+texture = ExtResource( 15 )
+
+[node name="Exit2" type="Label" parent="GameOver/btn_exitGameover" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 86.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Exit"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="GameOver" type="Label" parent="GameOver" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 426.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Game Over"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="YourScore" type="Label" parent="GameOver" index="3"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 49.0
+margin_right = 426.0
+margin_bottom = 81.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Your Score"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="YourScoreValue" type="Label" parent="GameOver/YourScore" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -4.0
+margin_top = 24.0
+margin_right = 422.0
+margin_bottom = 56.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "0"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="HighScore" type="Label" parent="GameOver" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 120.0
+margin_right = 426.0
+margin_bottom = 152.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "High Score"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="HighScoreValue" type="Label" parent="GameOver/HighScore" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -4.0
+margin_top = 24.0
+margin_right = 422.0
+margin_bottom = 56.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "0"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="8"]
+
+position = Vector2( 384, 183 )
+stream = ExtResource( 16 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="NpcTimer" type="Timer" parent="." index="9"]
+
+process_mode = 1
+wait_time = 6.0
+one_shot = false
+autostart = false
+
+[connection signal="area_entered" from="Platform/LantaiLifeDetect" to="." method="_on_LantaiLifeDetect_area_entered"]
+
+[connection signal="area_entered" from="Player/MainCoinDetect" to="." method="IncreseScore"]
+
+[connection signal="button_down" from="Menu/btn_start" to="." method="_on_btn_start_button_down"]
+
+[connection signal="button_down" from="Menu/btn_exit" to="." method="_on_btn_exit_button_down"]
+
+[connection signal="button_down" from="GameOver/btn_startGameOver" to="." method="_on_btn_startGameOver_button_down"]
+
+[connection signal="button_down" from="GameOver/btn_exitGameover" to="." method="_on_btn_exitGameover_button_down"]
+
+[connection signal="timeout" from="NpcTimer" to="." method="_on_NpcTimer_timeout"]
+
+

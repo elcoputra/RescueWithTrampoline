@@ -1,0 +1,155 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Script/NPCJatuh1.cs" type="Script" id=1]
+[ext_resource path="res://Art/NPC/NPCJatuh1/NPCJatuh10.png" type="Texture" id=2]
+[ext_resource path="res://Art/NPC/NPCJatuh1/NPCJatuh11.png" type="Texture" id=3]
+[ext_resource path="res://Art/NPC/NPCJatuh1/NPCJatuh12.png" type="Texture" id=4]
+[ext_resource path="res://Art/NPC/NPCJatuh1/NPCJatuh13.png" type="Texture" id=5]
+[ext_resource path="res://Art/NPC/NPCJatuh1/NPCJatuh14.png" type="Texture" id=6]
+[ext_resource path="res://Art/NPC/NPCJatuh1/NpcJatuh1_Idle.png" type="Texture" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 4.80542
+height = 24.4978
+
+[sub_resource type="CapsuleShape2D" id=3]
+
+custom_solver_bias = 0.0
+radius = 8.0008
+height = 20.0
+
+[node name="NPCJatuh1" type="RigidBody2D" index="0"]
+
+input_pickable = false
+collision_layer = 2
+collision_mask = 98
+mode = 0
+mass = 50.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 2
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = false
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 5.0
+angular_damp = -1.0
+script = ExtResource( 1 )
+_sections_unfolded = [ "Angular", "Applied Forces", "Collision", "Linear" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+
+rotation = 0.400152
+scale = Vector2( 1.5, 1.5 )
+frames = SubResource( 1 )
+animation = "default"
+frame = 4
+playing = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollRigid" type="CollisionShape2D" parent="." index="1"]
+
+position = Vector2( -2, -3 )
+rotation = 2.02284
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="NPCArea2D" type="Area2D" parent="." index="2"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 2
+collision_mask = 80
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCArea2D" index="0"]
+
+position = Vector2( -2, -3 )
+rotation = 2.02284
+shape = SubResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="TimerCoin" type="Timer" parent="." index="3"]
+
+process_mode = 1
+wait_time = 0.9
+one_shot = false
+autostart = false
+
+[node name="TimerDestroyCoin" type="Timer" parent="." index="4"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="TimerDestroyLantai" type="Timer" parent="." index="5"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="CoinSpawn" type="Position2D" parent="." index="6"]
+
+[node name="LifeDetect" type="Area2D" parent="." index="7"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 1024
+collision_mask = 2112
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="LifeDetect" index="0"]
+
+position = Vector2( -2, -3 )
+rotation = 2.02284
+shape = SubResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[connection signal="area_entered" from="NPCArea2D" to="." method="_on_Area2D_area_entered"]
+
+[connection signal="area_exited" from="NPCArea2D" to="." method="_on_Area2D_area_exited"]
+
+[connection signal="timeout" from="TimerCoin" to="." method="_on_TimerCoin_timeout"]
+
+[connection signal="timeout" from="TimerDestroyCoin" to="." method="_on_TimerDestroyCoin_timeout"]
+
+[connection signal="timeout" from="TimerDestroyLantai" to="." method="_on_TimerDestroyLantai_timeout"]
+
+[connection signal="area_entered" from="LifeDetect" to="." method="_on_LifeDetect_area_entered"]
+
+

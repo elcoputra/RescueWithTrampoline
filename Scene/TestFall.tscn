@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 10.0
+height = 20.0
+
+[node name="TestFall" type="RigidBody2D"]
+
+position = Vector2( 362.183, 31.9212 )
+input_pickable = false
+collision_layer = 3
+collision_mask = 3
+mode = 0
+mass = 60.0
+friction = 1.0
+bounce = 0.3
+gravity_scale = 3.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+rotation = 1.5708
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+

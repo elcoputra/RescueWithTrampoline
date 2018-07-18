@@ -1,0 +1,95 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Script/Trampoline.cs" type="Script" id=1]
+[ext_resource path="res://Art/Trampoline/Layer 1_sprite_Idle.png" type="Texture" id=2]
+[ext_resource path="res://Art/Trampoline/Layer 1_sprite_02.png" type="Texture" id=3]
+[ext_resource path="res://Art/Trampoline/Layer 1_sprite_03.png" type="Texture" id=4]
+[ext_resource path="res://Art/Trampoline/Layer 1_sprite_05.png" type="Texture" id=5]
+[ext_resource path="res://Art/Trampoline/Layer 1_sprite_06.png" type="Texture" id=6]
+[ext_resource path="res://Art/Trampoline/Layer 1_sprite_07.png" type="Texture" id=7]
+[ext_resource path="res://Art/Trampoline/Layer 1_sprite_09.png" type="Texture" id=8]
+[ext_resource path="res://Art/Trampoline/Layer 1_sprite_10.png" type="Texture" id=9]
+[ext_resource path="res://Art/Trampoline/Layer 1_sprite_11.png" type="Texture" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "Bouncing",
+"speed": 15.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 26.8863, 10.7389 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 27.0884, 2.38654 )
+
+[node name="Trampoline" type="Area2D"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 64
+collision_mask = 14
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+
+scale = Vector2( 2, 2 )
+frames = SubResource( 1 )
+animation = "default"
+playing = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="1"]
+
+position = Vector2( 0, -4 )
+input_pickable = false
+collision_layer = 32
+collision_mask = 10
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.8
+_sections_unfolded = [ "Collision", "Material", "Pickable", "Transform", "Visibility", "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+
+position = Vector2( 1.00001, 7.60436 )
+rotation = 3.14159
+scale = Vector2( 1, 0.737654 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+
+visible = false
+position = Vector2( 1, -3 )
+shape = SubResource( 3 )
+one_way_collision = true
+_sections_unfolded = [ "Transform" ]
+
+[connection signal="body_entered" from="." to="." method="_on_Trampoline_body_entered"]
+
+[connection signal="body_exited" from="." to="." method="_on_Trampoline_body_exited"]
+
+

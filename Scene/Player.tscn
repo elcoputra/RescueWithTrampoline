@@ -1,0 +1,133 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Script/Player.cs" type="Script" id=1]
+[ext_resource path="res://Art/Player/Pemegang0.png" type="Texture" id=2]
+[ext_resource path="res://Art/Player/PemegangIdle.png" type="Texture" id=3]
+[ext_resource path="res://Art/Player/Pemegang1.png" type="Texture" id=4]
+[ext_resource path="res://Art/Player/Pemegang2.png" type="Texture" id=5]
+[ext_resource path="res://Art/Player/Pemegang3.png" type="Texture" id=6]
+[ext_resource path="res://Art/Player/Pemegang4.png" type="Texture" id=7]
+[ext_resource path="res://Art/Player/Pemegang5.png" type="Texture" id=8]
+[ext_resource path="res://Art/Player/Pemegang6.png" type="Texture" id=9]
+[ext_resource path="res://Scene/Trampoline.tscn" type="PackedScene" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "JalanKanan",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "JalanKiri",
+"speed": 20.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "JalanKanan",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "JalanKiri",
+"speed": 20.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=3]
+
+custom_solver_bias = 0.0
+radius = 6.57776
+height = 34.0097
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 45.0213, 20.9577 )
+
+[node name="Player" type="KinematicBody2D"]
+
+position = Vector2( 411, 313.001 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 24
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "collision" ]
+__meta__ = {
+"_edit_group_": true
+}
+RunSpeed = 200
+JumpSpeed = -400
+Gravity = 1200
+
+[node name="KiriAnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+
+position = Vector2( -40, 0 )
+scale = Vector2( 1.5, 1.5 )
+frames = SubResource( 1 )
+animation = "default"
+playing = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="KananAnimatedSprite" type="AnimatedSprite" parent="." index="1"]
+
+position = Vector2( 40, 0 )
+scale = Vector2( 1.5, 1.5 )
+frames = SubResource( 2 )
+animation = "default"
+playing = true
+flip_h = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="colKiri" type="CollisionShape2D" parent="." index="2"]
+
+position = Vector2( -41, 1 )
+shape = SubResource( 3 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+
+[node name="colKanan" type="CollisionShape2D" parent="." index="3"]
+
+position = Vector2( 41, 1 )
+shape = SubResource( 3 )
+
+[node name="Trampoline" parent="." index="4" instance=ExtResource( 10 )]
+
+position = Vector2( 0, -7 )
+
+[node name="PlayerArea" type="Area2D" parent="." index="5"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 128
+collision_mask = 256
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea" index="0"]
+
+position = Vector2( 0, 1 )
+shape = SubResource( 4 )
+
+[connection signal="area_entered" from="PlayerArea" to="." method="_on_PlayerArea_area_entered"]
+
+
