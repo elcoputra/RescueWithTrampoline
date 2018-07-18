@@ -13,7 +13,6 @@ public class Main : Node2D
     Timer NpcTimer;
     Label LabelCoin;
     Label WaveLabel;
-
     Panel PanelGameOver;
     private Random rand = new Random();
 
@@ -104,158 +103,60 @@ public class Main : Node2D
 
    public void wave()
    {
-       if(score == 10)
+
+
+
+
+       switch(score)
        {
+           case 5:
            NpcTimer.WaitTime = 5.5f;
            WaveLabel.Text = "Wave 2 - Just Trying";
-        //    GD.Print(NpcTimer.WaitTime);
-           
-       }
+           break;
 
-       if(score == 20)
-       {
+           case 20:
            NpcTimer.WaitTime = 5f;
            WaveLabel.Text = "Wave 3 - interested";
-        //    GD.Print(NpcTimer.WaitTime);
-           
-       }
-       if(score == 30)
-       {
+           break;
+
+           case 30:
            NpcTimer.WaitTime = 4.80f;
-           WaveLabel.Text = "Wave 4 - Newbe";
-        //    GD.Print(NpcTimer.WaitTime);
-           
-       }
-       if(score == 40)
-       {
-           NpcTimer.WaitTime = 4.75f;
-           WaveLabel.Text = "Wave 5 - Amateur";
-        //    GD.Print(NpcTimer.WaitTime);
-           
-       }
-       if(score == 50)
-       {
+           WaveLabel.Text = "Wave 4 - Amateur";
+           break;
+
+           case 40:
            NpcTimer.WaitTime = 4.50f;
-           WaveLabel.Text = "Wave 6 Keep Playing";
-        //    GD.Print(NpcTimer.WaitTime);
-           
-       }
-       if(score == 80)
-       {
-           NpcTimer.WaitTime = 4.25f;
-           WaveLabel.Text = "Wave 7 Litle Pro";
-        //    GD.Print(NpcTimer.WaitTime);
-           
-       }
-       if(score == 90)
-       {
-           NpcTimer.WaitTime = 4f;
-           WaveLabel.Text = "Wave 8 Semi Pro";
-        //    GD.Print(NpcTimer.WaitTime);
-           
-       }
+           WaveLabel.Text = "Wave 5 - Keep Playing";
+           break;
 
-       if(score == 100)
-       {
-           NpcTimer.WaitTime = 3.75f;
-           WaveLabel.Text = "Wave 9 Very Interested";
-        //    GD.Print(NpcTimer.WaitTime);
-           
-       }
+           case 50:
+           NpcTimer.WaitTime = 4.00f;
+           WaveLabel.Text = "Wave 6 - Litle Pro";
+           break;
 
-       if(score == 115)
-       {
-           NpcTimer.WaitTime = 3.60f;
-           WaveLabel.Text = "Wave 10 Become A Pro";
-        //    GD.Print(NpcTimer.WaitTime);
-           
-       }
+           case 70:
+           NpcTimer.WaitTime = 3.00f;
+           WaveLabel.Text = "Wave 7 - Semi Pro";
+           break;
 
-       if(score == 130)
-       {
-           NpcTimer.WaitTime = 3.5f;
-           WaveLabel.Text = "Wave 11 Beautifull";
-        //    GD.Print(NpcTimer.WaitTime);
-           
-       }
+           case 80:
+           NpcTimer.WaitTime = 3.50f;
+           WaveLabel.Text = "Wave 8 - Very Interested";
+           break;
 
-       if(score == 150)
-       {
-           NpcTimer.WaitTime = 3.25f;
-           WaveLabel.Text = "Wave 12 Proffesional";
-        //    GD.Print(NpcTimer.WaitTime);
-           
-       }
+           case 90:
+           NpcTimer.WaitTime = 3.00f;
+           WaveLabel.Text = "Wave 9 - Become A Pro";
+           break;
 
-       if(score == 170)
-       {
-           NpcTimer.WaitTime = 3f;
-           WaveLabel.Text = "Wave 13";
-        //    GD.Print(NpcTimer.WaitTime);
-           
-       }
-
-       if(score == 190)
-       {
-           NpcTimer.WaitTime = 2.75f;
-           WaveLabel.Text = "Wave 14";
-        //    GD.Print(NpcTimer.WaitTime);
-           
-       }
-
-       if(score == 250)
-       {
+           case 100:
            NpcTimer.WaitTime = 2.5f;
-           WaveLabel.Text = "Wave 15";
-        //    GD.Print(NpcTimer.WaitTime);
+           WaveLabel.Text = "Wave 10 - Pro";
+           break;
            
        }
 
-       if(score == 300)
-       {
-           NpcTimer.WaitTime = 2.25f;
-           WaveLabel.Text = "Wave 16";
-        //    GD.Print(NpcTimer.WaitTime);
-           
-       }
-       if(score == 400)
-       {
-           NpcTimer.WaitTime = 2f;
-           WaveLabel.Text = "Wave 17";
-        //    GD.Print(NpcTimer.WaitTime);
-           
-       }
 
-       if(score == 600)
-       {
-           NpcTimer.WaitTime = 1.75f;
-           WaveLabel.Text = "Wave 18";
-        //    GD.Print(NpcTimer.WaitTime);
-           
-       }
-       if(score == 700)
-       {
-           NpcTimer.WaitTime = 1.75f;
-           WaveLabel.Text = "Wave 18";
-        //    GD.Print(NpcTimer.WaitTime);
-           
-       }
-
-       if(score == 800)
-       {
-           NpcTimer.WaitTime = 1.50f;
-           WaveLabel.Text = "Wave 19";
-        //    GD.Print(NpcTimer.WaitTime);
-           
-       }
-
-       if(score == 900)
-       {
-           NpcTimer.WaitTime = 1.25f;
-           WaveLabel.Text = "Wave 20";
-        //    GD.Print(NpcTimer.WaitTime);
-           
-       }
    }
 
    public void _on_LantaiLifeDetect_area_entered(Godot.Area2D lantaiDetectLife)
@@ -345,18 +246,6 @@ public class Main : Node2D
        
    }
 
-
-
-   public void saveGame()
-   {
-
-
-   }
-
-   public void loadGame()
-   {
-
-   }
 
    
 
