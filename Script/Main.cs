@@ -7,11 +7,14 @@ public class Main : Node2D
     public PackedScene npc;
     public int score;
     public int minusNyawa;
+    public int StatusmusicOn;
     Timer NpcTimer;
     Label LabelCoin;
     Label WaveLabel;
+    Label MusicOnOfLabel;
     Panel PanelGameOver;
     AudioStreamPlayer2D MusicMenu;
+    AnimatedSprite animOnOffMusic;
     private Random rand = new Random();
 
     KinematicBody2D player;
@@ -22,6 +25,10 @@ public class Main : Node2D
     public override void _Ready()
     {
         MusicMenu = (AudioStreamPlayer2D) GetNode("MusicMenu");
+        MusicMenu.Play();
+        animOnOffMusic = (AnimatedSprite) GetNode("Menu/MusicOnOf");
+        StatusmusicOn = 1;
+        MusicOnOfLabel = (Label) GetNode("Menu/MusicOnOf/MusicStatus");
 
         player = (KinematicBody2D) GetNode("Player");
         npc = (PackedScene)ResourceLoader.Load("res://Scene/NPCJatuh1.tscn");
@@ -224,13 +231,26 @@ public class Main : Node2D
        PanelGameOver.Visible = true;   
    }
 
-
+   public void _on_MsuciStatus_button_down()
+   {
    
+       switch (StatusmusicOn)
+       {
+           case 1:
+            MusicMenu.Stop();
+            animOnOffMusic.Play("Off");
+            MusicOnOfLabel.SetText("Music Off");
+            StatusmusicOn = 0;
+            break;
 
-   
-
-   
-
-
+            case 0:
+            MusicMenu.Play();
+            animOnOffMusic.Play("On");
+            MusicOnOfLabel.SetText("Music On");
+            StatusmusicOn = 1;
+            break;
+       }
+       
+   }
    
 }
