@@ -8,11 +8,18 @@ public class Main : Node2D
     public int score;
     public int minusNyawa;
     public int StatusmusicOn;
+    public int menuAboutStatus = 0;
+    public int speedMenuAbput = 100;
+    int Menuopen = 0;
+
     Timer NpcTimer;
     Label LabelCoin;
     Label WaveLabel;
     Label MusicOnOfLabel;
     Panel PanelGameOver;
+    Node2D AboutPanel;
+    Tween AboutTween;
+
     AudioStreamPlayer2D MusicMenu;
     AnimatedSprite animOnOffMusic;
     private Random rand = new Random();
@@ -38,6 +45,11 @@ public class Main : Node2D
         PanelGameOver = (Panel) GetNode("GameOver");
         PanelGameOver.Visible = false;
 
+        AboutPanel = (Node2D) GetNode("Menu/About");
+        AboutTween = (Tween) GetNode("Menu/About/Tween");
+
+        
+
 
 
         player.Visible = false;    
@@ -57,6 +69,7 @@ public class Main : Node2D
        {
            GameOver();
        }
+
 
       
        
@@ -219,6 +232,36 @@ public class Main : Node2D
    {
        GetTree().Quit(); // default behavior
    }
+
+   public void btn_about_down()
+   {
+       GD.Print(AboutPanel.GetPosition());
+
+       Vector2 finalPosOpen = new Vector2();
+       finalPosOpen.x = -1;
+       finalPosOpen.y = 0;
+
+       Vector2 finalPosClose = new Vector2();
+       finalPosClose.x = -184;
+       finalPosClose.y = 0;
+    
+       switch (Menuopen)
+       {
+           case 1:
+            AboutTween.InterpolateProperty(AboutPanel,":position",AboutPanel.GetPosition(), finalPosClose, 1.0f, Tween.TransitionType.Bounce, Tween.EaseType.Out, 0);
+            AboutTween.Start();
+            Menuopen = 0;
+           break;
+
+           case 0:
+            AboutTween.InterpolateProperty(AboutPanel,":position",AboutPanel.GetPosition(), finalPosOpen, 1.0f, Tween.TransitionType.Bounce, Tween.EaseType.Out, 0);
+            AboutTween.Start();
+            Menuopen = 1;
+           break;
+       }
+   }
+
+
 
 
 

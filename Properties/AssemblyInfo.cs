@@ -3,12 +3,12 @@ using System.Reflection;
 // Information about this assembly is defined by the following attributes.
 // Change them to the values specific to your project.
 
-[assembly: AssemblyTitle("RescueWithTrampoline")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("")]
+[assembly: AssemblyTitle("Rescue With Trampoline")]
+[assembly: AssemblyDescription("Game Menyelamatkan Orang Jatuh Dengan Trampolin")]
+[assembly: AssemblyConfiguration("64Bit")]
+[assembly: AssemblyCompany("KAKAKIKO")]
+[assembly: AssemblyProduct("Rescue With Trampoline")]
+[assembly: AssemblyCopyright("Copyright (c) 2018 Kakakio, Elco Iriansyah Putra")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

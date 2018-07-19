@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Script/Main.cs" type="Script" id=1]
 [ext_resource path="res://Scene/NPCJatuh1.tscn" type="PackedScene" id=2]
@@ -16,8 +16,9 @@
 [ext_resource path="res://Scene/Player.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Art/Cosmetic/MusicOnOff/Music0.png" type="Texture" id=15]
 [ext_resource path="res://Art/Cosmetic/MusicOnOff/Music1.png" type="Texture" id=16]
-[ext_resource path="res://Art/Cosmetic/Block.png" type="Texture" id=17]
-[ext_resource path="res://Music/elco-original-file-music.wav" type="AudioStream" id=18]
+[ext_resource path="res://Art/Cosmetic/Block2.png" type="Texture" id=17]
+[ext_resource path="res://Art/Cosmetic/Block.png" type="Texture" id=18]
+[ext_resource path="res://Music/elco-original-file-music.wav" type="AudioStream" id=19]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -62,7 +63,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 722, -1, 0, 0, 0, 0, 60, 0 )
 }
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=7]
 
 size = 10
 use_mipmaps = false
@@ -70,7 +71,7 @@ use_filter = false
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=8]
 
 size = 50
 use_mipmaps = false
@@ -78,7 +79,7 @@ use_filter = false
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Font", "Resource", "Settings" ]
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=9]
 
 size = 30
 use_mipmaps = false
@@ -86,7 +87,23 @@ use_filter = false
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Font", "Resource", "Settings" ]
 
-[sub_resource type="SpriteFrames" id=14]
+[sub_resource type="DynamicFont" id=10]
+
+size = 30
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Font", "Resource", "Settings" ]
+
+[sub_resource type="DynamicFont" id=11]
+
+size = 30
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Font", "Resource", "Settings" ]
+
+[sub_resource type="SpriteFrames" id=12]
 
 animations = [ {
 "frames": [ ExtResource( 15 ) ],
@@ -100,7 +117,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFont" id=15]
+[sub_resource type="DynamicFont" id=13]
 
 size = 12
 use_mipmaps = false
@@ -108,18 +125,26 @@ use_filter = false
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Font", "Resource", "Settings" ]
 
-[sub_resource type="DynamicFontData" id=9]
+[sub_resource type="DynamicFont" id=14]
+
+size = 40
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
+
+[sub_resource type="DynamicFontData" id=15]
 
 hinting = 2
 font_path = "res://Art/Fonts/homespun.ttf"
 _sections_unfolded = [ "Resource" ]
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=16]
 
 size = 30
 use_mipmaps = false
 use_filter = false
-font_data = SubResource( 9 )
+font_data = SubResource( 15 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Font/fallback", "Resource", "Settings" ]
 
 [node name="Main" type="Node2D" index="0"]
@@ -187,7 +212,7 @@ position = Vector2( 28, 58 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 2 )
 animation = "default"
-frame = 2
+frame = 4
 playing = true
 _sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
 __meta__ = {
@@ -199,7 +224,7 @@ __meta__ = {
 scale = Vector2( 0.9, 0.9 )
 frames = SubResource( 3 )
 animation = "default"
-frame = 2
+frame = 4
 playing = true
 _sections_unfolded = [ "Transform", "Visibility" ]
 
@@ -211,7 +236,7 @@ position = Vector2( 45, 58 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 2 )
 animation = "default"
-frame = 2
+frame = 4
 playing = true
 _sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
 __meta__ = {
@@ -223,7 +248,7 @@ __meta__ = {
 scale = Vector2( 0.9, 0.9 )
 frames = SubResource( 3 )
 animation = "default"
-frame = 2
+frame = 4
 playing = true
 _sections_unfolded = [ "Transform", "Visibility" ]
 
@@ -235,7 +260,7 @@ position = Vector2( 61, 58 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 2 )
 animation = "default"
-frame = 2
+frame = 4
 playing = true
 _sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
 __meta__ = {
@@ -247,7 +272,7 @@ __meta__ = {
 scale = Vector2( 0.9, 0.9 )
 frames = SubResource( 3 )
 animation = "default"
-frame = 2
+frame = 4
 playing = true
 _sections_unfolded = [ "Transform", "Visibility" ]
 
@@ -328,9 +353,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -13.0
+margin_left = -14.0
 margin_top = -5.0
-margin_right = 780.0
+margin_right = 779.0
 margin_bottom = 456.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -340,7 +365,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Visibility" ]
 
-[node name="Label" type="Label" parent="Menu/MenuPanel" index="0"]
+[node name="Copyright" type="Label" parent="Menu/MenuPanel" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -356,7 +381,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 7 )
 text = "Made By KAKAKIKO (Elco Iiriansyah) With Godot Engine(C#)"
 percent_visible = 1.0
 lines_skipped = 0
@@ -369,9 +394,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 14.0
+margin_left = 279.0
 margin_top = 5.0
-margin_right = 784.0
+margin_right = 519.0
 margin_bottom = 191.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -379,7 +404,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 8 )
 text = "Rescue
 With
 Trampoline"
@@ -407,7 +432,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 9 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -415,7 +440,7 @@ group = null
 text = "Start Game"
 flat = true
 align = 1
-_sections_unfolded = [ "Anchor", "Grow Direction", "Hint", "Rect", "Visibility" ]
+_sections_unfolded = [ "Anchor", "Grow Direction", "Rect", "Visibility", "custom_colors", "custom_fonts" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -427,9 +452,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 321.0
-margin_top = 321.0
+margin_top = 320.0
 margin_right = 458.0
-margin_bottom = 357.0
+margin_bottom = 356.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -437,7 +462,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 10 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -467,7 +492,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 11 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -482,9 +507,10 @@ __meta__ = {
 
 [node name="MusicOnOf" type="AnimatedSprite" parent="Menu" index="4"]
 
+editor/display_folded = true
 position = Vector2( 726, 25 )
 scale = Vector2( 1.28125, 1.28125 )
-frames = SubResource( 14 )
+frames = SubResource( 12 )
 animation = "On"
 __meta__ = {
 "_edit_group_": true
@@ -506,7 +532,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 13 )
 text = "Music On"
 percent_visible = 1.0
 lines_skipped = 0
@@ -538,8 +564,58 @@ flat = true
 align = 1
 _sections_unfolded = [ "Hint" ]
 
+[node name="About" type="Node2D" parent="Menu" index="5"]
+
+position = Vector2( -184, 0 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Menu/About" index="0"]
+
+position = Vector2( 70, 217.5 )
+scale = Vector2( 7.1875, 13.5938 )
+texture = ExtResource( 17 )
+
+[node name="Header" type="Label" parent="Menu/About" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 40.0
+margin_right = 140.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 14 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "About"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="Tween" type="Tween" parent="Menu/About" index="2"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+_sections_unfolded = [ "Pause", "playback" ]
+
 [node name="GameOver" type="Panel" parent="." index="7"]
 
+editor/display_folded = true
 visible = false
 self_modulate = Color( 0, 0, 0, 1 )
 anchor_left = 0.0
@@ -590,7 +666,7 @@ __meta__ = {
 
 position = Vector2( 43, 16 )
 scale = Vector2( 2.71875, 2.71875 )
-texture = ExtResource( 17 )
+texture = ExtResource( 18 )
 
 [node name="Start2" type="Label" parent="GameOver/btn_startGameOver" index="1"]
 
@@ -606,7 +682,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 16 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Start"
 align = 1
@@ -645,7 +721,7 @@ align = 1
 
 position = Vector2( 43, 16 )
 scale = Vector2( 2.71875, 2.71875 )
-texture = ExtResource( 17 )
+texture = ExtResource( 18 )
 
 [node name="Exit2" type="Label" parent="GameOver/btn_exitGameover" index="1"]
 
@@ -661,7 +737,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 16 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Exit"
 align = 1
@@ -685,7 +761,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 16 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Game Over"
 align = 1
@@ -711,7 +787,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 16 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Your Score"
 align = 1
@@ -737,7 +813,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 16 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "0"
 align = 1
@@ -763,7 +839,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 16 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "High Score"
 align = 1
@@ -789,7 +865,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 16 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "0"
 align = 1
@@ -802,7 +878,7 @@ _sections_unfolded = [ "custom_colors", "custom_fonts" ]
 [node name="MusicMenu" type="AudioStreamPlayer2D" parent="." index="8"]
 
 position = Vector2( 384, 183 )
-stream = ExtResource( 18 )
+stream = ExtResource( 19 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -823,6 +899,8 @@ autostart = false
 [connection signal="area_entered" from="Player/MainCoinDetect" to="." method="IncreseScore"]
 
 [connection signal="button_down" from="Menu/btn_start" to="." method="_on_btn_start_button_down"]
+
+[connection signal="button_down" from="Menu/btn_About" to="." method="btn_about_down"]
 
 [connection signal="button_down" from="Menu/btn_exit" to="." method="_on_btn_exit_button_down"]
 
