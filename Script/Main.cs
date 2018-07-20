@@ -21,6 +21,7 @@ public class Main : Node2D
     Tween AboutTween;
 
     AudioStreamPlayer2D MusicMenu;
+    AudioStreamPlayer2D MusicPlay;
     AnimatedSprite animOnOffMusic;
     private Random rand = new Random();
 
@@ -32,6 +33,7 @@ public class Main : Node2D
     public override void _Ready()
     {
         MusicMenu = (AudioStreamPlayer2D) GetNode("MusicMenu");
+        MusicPlay = (AudioStreamPlayer2D) GetNode("MusicPlay");
         MusicMenu.Play();
         animOnOffMusic = (AnimatedSprite) GetNode("Menu/MusicOnOf");
         StatusmusicOn = 1;
@@ -48,32 +50,26 @@ public class Main : Node2D
         AboutPanel = (Node2D) GetNode("Menu/About");
         AboutTween = (Tween) GetNode("Menu/About/Tween");
 
-        
-
-
 
         player.Visible = false;    
     }
 
-    private float RandRand(float min , float max)
-    {
-        return (float) (rand.NextDouble() * (max - min) + min);
-    }
-
    public override void _Process(float delta)
    {
-
        wave();
 
        if(minusNyawa >= 3)
        {
            GameOver();
        }
-
-
-      
-       
    }
+
+    private float RandRand(float min , float max)
+    {
+        return (float) (rand.NextDouble() * (max - min) + min);
+    }
+
+
 
    public void _on_NpcTimer_timeout()
    {
@@ -199,6 +195,7 @@ public class Main : Node2D
         menuGui.Visible = false;
 
         MusicMenu.Stop();
+        MusicPlay.Play();
    }
 
    public void _on_btn_startGameOver_button_down()
@@ -248,22 +245,22 @@ public class Main : Node2D
        switch (Menuopen)
        {
            case 1:
-            AboutTween.InterpolateProperty(AboutPanel,":position",AboutPanel.GetPosition(), finalPosClose, 1.0f, Tween.TransitionType.Bounce, Tween.EaseType.Out, 0);
+            AboutTween.InterpolateProperty(AboutPanel,":position",
+                                            AboutPanel.GetPosition(), finalPosClose, 1.0f, 
+                                            Tween.TransitionType.Bounce, Tween.EaseType.Out, 0);
             AboutTween.Start();
             Menuopen = 0;
            break;
 
            case 0:
-            AboutTween.InterpolateProperty(AboutPanel,":position",AboutPanel.GetPosition(), finalPosOpen, 1.0f, Tween.TransitionType.Bounce, Tween.EaseType.Out, 0);
+            AboutTween.InterpolateProperty(AboutPanel,":position",
+                                            AboutPanel.GetPosition(), finalPosOpen, 1.0f, 
+                                            Tween.TransitionType.Bounce, Tween.EaseType.Out, 0);
             AboutTween.Start();
             Menuopen = 1;
            break;
        }
    }
-
-
-
-
 
    public void GameOver()
    {   

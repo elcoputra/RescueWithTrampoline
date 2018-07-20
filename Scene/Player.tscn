@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Script/Player.cs" type="Script" id=1]
 [ext_resource path="res://Art/Player/Pemegang0.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Art/Player/Pemegang5.png" type="Texture" id=8]
 [ext_resource path="res://Art/Player/Pemegang6.png" type="Texture" id=9]
 [ext_resource path="res://Scene/Trampoline.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Music/Jump.wav" type="AudioStream" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -82,6 +83,7 @@ position = Vector2( -40, 0 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 1 )
 animation = "default"
+frame = 1
 playing = true
 _sections_unfolded = [ "Transform" ]
 
@@ -91,6 +93,7 @@ position = Vector2( 40, 0 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 2 )
 animation = "default"
+frame = 1
 playing = true
 flip_h = true
 _sections_unfolded = [ "Transform" ]
@@ -127,6 +130,16 @@ _sections_unfolded = [ "Collision" ]
 
 position = Vector2( 0, 1 )
 shape = SubResource( 4 )
+
+[node name="Jump" type="AudioStreamPlayer" parent="." index="6"]
+
+stream = ExtResource( 11 )
+volume_db = -10.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+_sections_unfolded = [ "Pause" ]
 
 [connection signal="area_entered" from="PlayerArea" to="." method="_on_PlayerArea_area_entered"]
 

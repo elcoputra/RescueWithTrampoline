@@ -8,6 +8,7 @@ public class Player : KinematicBody2D
     [Export] public int Gravity = 1200;
 
     Vector2 velocity = new Vector2();
+    AudioStreamPlayer JumpSound;
 
     bool jumping = false;
     public int scorePlayerNode = 0;
@@ -21,6 +22,8 @@ public class Player : KinematicBody2D
     {
         animKiri = (AnimatedSprite) GetNode("KiriAnimatedSprite");
         animKanan = (AnimatedSprite) GetNode("KananAnimatedSprite");
+
+        JumpSound = (AudioStreamPlayer) GetNode("Jump");
 
     }
 
@@ -39,8 +42,10 @@ public class Player : KinematicBody2D
 
         if (jump && IsOnFloor())
         {
+
             jumping = true;
             velocity.y = JumpSpeed;
+            JumpSound.Play();
         }
 
         if (right)
