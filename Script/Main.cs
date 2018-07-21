@@ -11,6 +11,7 @@ public class Main : Node2D
     public int menuAboutStatus = 0;
     public int speedMenuAbput = 100;
     int Menuopen = 0;
+    
 
     Timer NpcTimer;
     Label LabelCoin;
@@ -69,8 +70,6 @@ public class Main : Node2D
         return (float) (rand.NextDouble() * (max - min) + min);
     }
 
-
-
    public void _on_NpcTimer_timeout()
    {
        NpcTimer = (Timer) GetNode("NpcTimer");
@@ -85,18 +84,16 @@ public class Main : Node2D
         var NpcInstance = (RigidBody2D) npc.Instance();
         AddChild(NpcInstance);
 
-       var direction = NpcSpawnLocation.Rotation + Mathf.Pi / 2;
+    //    var direction = NpcSpawnLocation.Rotation + Mathf.Pi / 2;
 
        NpcInstance.Position = NpcSpawnLocation.Position;
 
        
-       direction += RandRand(-Mathf.Pi / 4, Mathf.Pi / 15);
-       NpcInstance.Rotation = direction;
+    //    direction += RandRand(-Mathf.Pi / 4, Mathf.Pi / 15);
+    //    NpcInstance.Rotation = direction;
 
     }
    }
-
-
 
    public void IncreseScore(Godot.Area2D area)
    {   
@@ -213,6 +210,8 @@ public class Main : Node2D
         var guiLope3 = (AnimatedSprite) GetNode("GUI/life/life3");
         guiLope3.Visible = true;
 
+        MusicPlay.Play();
+
 
 
         PanelGameOver.Visible = false;
@@ -263,12 +262,24 @@ public class Main : Node2D
    }
 
    public void GameOver()
-   {   
+   {      
+       MusicPlay.Stop();
        Label LabelYourScore = (Label) GetNode("GameOver/YourScore/YourScoreValue");
        LabelYourScore.Text = score.ToString();
        player.Visible = false;
        NpcTimer.Stop();
        PanelGameOver.Visible = true;   
+
+   }
+
+   public void _on_GameOver_visibility_changed()
+   {
+       if(minusNyawa == 3)
+       {
+            AudioStreamPlayer2D MusicGameOver = (AudioStreamPlayer2D) GetNode("MusicGameOver");
+            MusicGameOver.Play();
+       }
+       
    }
 
    public void _on_MsuciStatus_button_down()

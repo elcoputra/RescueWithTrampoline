@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Script/Main.cs" type="Script" id=1]
 [ext_resource path="res://Scene/NPCJatuh1.tscn" type="PackedScene" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Art/Cosmetic/Block.png" type="Texture" id=18]
 [ext_resource path="res://Music/elco-original-file-music.wav" type="AudioStream" id=19]
 [ext_resource path="res://Music/Komiku The weekly fair.wav" type="AudioStream" id=20]
+[ext_resource path="res://Music/GameOver.wav" type="AudioStream" id=21]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -134,7 +135,7 @@ use_filter = false
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
 
-[sub_resource type="DynamicFont" id=17]
+[sub_resource type="DynamicFont" id=15]
 
 size = 20
 use_mipmaps = false
@@ -142,7 +143,7 @@ use_filter = false
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
 
-[sub_resource type="DynamicFont" id=18]
+[sub_resource type="DynamicFont" id=16]
 
 size = 12
 use_mipmaps = false
@@ -150,18 +151,18 @@ use_filter = false
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
 
-[sub_resource type="DynamicFontData" id=15]
+[sub_resource type="DynamicFontData" id=17]
 
 hinting = 2
 font_path = "res://Art/Fonts/homespun.ttf"
 _sections_unfolded = [ "Resource" ]
 
-[sub_resource type="DynamicFont" id=16]
+[sub_resource type="DynamicFont" id=18]
 
 size = 30
 use_mipmaps = false
 use_filter = false
-font_data = SubResource( 15 )
+font_data = SubResource( 17 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Font/fallback", "Resource", "Settings" ]
 
 [node name="Main" type="Node2D" index="0"]
@@ -229,7 +230,7 @@ position = Vector2( 28, 58 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 2 )
 animation = "default"
-frame = 2
+frame = 1
 playing = true
 _sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
 __meta__ = {
@@ -241,7 +242,7 @@ __meta__ = {
 scale = Vector2( 0.9, 0.9 )
 frames = SubResource( 3 )
 animation = "default"
-frame = 2
+frame = 1
 playing = true
 _sections_unfolded = [ "Transform", "Visibility" ]
 
@@ -253,7 +254,7 @@ position = Vector2( 45, 58 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 2 )
 animation = "default"
-frame = 2
+frame = 1
 playing = true
 _sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
 __meta__ = {
@@ -265,7 +266,7 @@ __meta__ = {
 scale = Vector2( 0.9, 0.9 )
 frames = SubResource( 3 )
 animation = "default"
-frame = 2
+frame = 1
 playing = true
 _sections_unfolded = [ "Transform", "Visibility" ]
 
@@ -277,7 +278,7 @@ position = Vector2( 61, 58 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 2 )
 animation = "default"
-frame = 2
+frame = 1
 playing = true
 _sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
 __meta__ = {
@@ -289,7 +290,7 @@ __meta__ = {
 scale = Vector2( 0.9, 0.9 )
 frames = SubResource( 3 )
 animation = "default"
-frame = 2
+frame = 1
 playing = true
 _sections_unfolded = [ "Transform", "Visibility" ]
 
@@ -345,6 +346,7 @@ editor/display_folded = true
 self_modulate = Color( 0.5, 0.6, 1, 0.7 )
 position = Vector2( 0, 1 )
 curve = SubResource( 6 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="NpcSpawnLocation" type="PathFollow2D" parent="NpcSpawn" index="0"]
 
@@ -353,10 +355,10 @@ rotation = 3.14008
 offset = 0.0
 h_offset = 0.0
 v_offset = 0.0
-rotate = true
+rotate = false
 cubic_interp = true
 loop = true
-lookahead = 4.0
+lookahead = 100.0
 _sections_unfolded = [ "Transform" ]
 
 [node name="Menu" type="Node2D" parent="." index="6"]
@@ -635,7 +637,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "KAKAKIKO(c)"
 align = 1
@@ -662,7 +664,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Programmer"
 align = 1
@@ -688,7 +690,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 16 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Elco Iriansyah"
 align = 1
@@ -715,7 +717,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Art"
 align = 1
@@ -741,7 +743,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 16 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Elco Iriansyah"
 align = 1
@@ -767,7 +769,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Music"
 align = 1
@@ -793,7 +795,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 16 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Elco - Intro"
 align = 1
@@ -819,7 +821,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 16 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Komiku - The weekly fair"
 align = 1
@@ -908,7 +910,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 18 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Start"
 align = 1
@@ -963,7 +965,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 18 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Exit"
 align = 1
@@ -987,7 +989,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 18 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Game Over"
 align = 1
@@ -1013,7 +1015,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 18 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Your Score"
 align = 1
@@ -1039,7 +1041,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 18 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "0"
 align = 1
@@ -1065,7 +1067,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 18 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "High Score"
 align = 1
@@ -1091,7 +1093,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 18 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "0"
 align = 1
@@ -1105,7 +1107,7 @@ _sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
 position = Vector2( 384, 183 )
 stream = ExtResource( 19 )
-volume_db = 0.0
+volume_db = -5.0
 pitch_scale = 1.0
 autoplay = false
 max_distance = 2000.0
@@ -1125,7 +1127,20 @@ attenuation = 1.0
 bus = "Master"
 area_mask = 1
 
-[node name="NpcTimer" type="Timer" parent="." index="10"]
+[node name="MusicGameOver" type="AudioStreamPlayer2D" parent="." index="10"]
+
+position = Vector2( 386, 225 )
+stream = ExtResource( 21 )
+volume_db = -10.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+_sections_unfolded = [ "Pause", "Transform" ]
+
+[node name="NpcTimer" type="Timer" parent="." index="11"]
 
 process_mode = 1
 wait_time = 6.0
@@ -1143,6 +1158,8 @@ autostart = false
 [connection signal="button_down" from="Menu/btn_exit" to="." method="_on_btn_exit_button_down"]
 
 [connection signal="button_down" from="Menu/MusicOnOf/MsuciStatus" to="." method="_on_MsuciStatus_button_down"]
+
+[connection signal="visibility_changed" from="GameOver" to="." method="_on_GameOver_visibility_changed"]
 
 [connection signal="button_down" from="GameOver/btn_startGameOver" to="." method="_on_btn_startGameOver_button_down"]
 

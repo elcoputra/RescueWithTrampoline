@@ -1,16 +1,17 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Script/Player.cs" type="Script" id=1]
 [ext_resource path="res://Art/Player/Pemegang0.png" type="Texture" id=2]
 [ext_resource path="res://Art/Player/PemegangIdle.png" type="Texture" id=3]
-[ext_resource path="res://Art/Player/Pemegang1.png" type="Texture" id=4]
-[ext_resource path="res://Art/Player/Pemegang2.png" type="Texture" id=5]
-[ext_resource path="res://Art/Player/Pemegang3.png" type="Texture" id=6]
-[ext_resource path="res://Art/Player/Pemegang4.png" type="Texture" id=7]
-[ext_resource path="res://Art/Player/Pemegang5.png" type="Texture" id=8]
-[ext_resource path="res://Art/Player/Pemegang6.png" type="Texture" id=9]
+[ext_resource path="res://Art/Player/Pemegang6.png" type="Texture" id=4]
+[ext_resource path="res://Art/Player/Pemegang5.png" type="Texture" id=5]
+[ext_resource path="res://Art/Player/Pemegang4.png" type="Texture" id=6]
+[ext_resource path="res://Art/Player/Pemegang3.png" type="Texture" id=7]
+[ext_resource path="res://Art/Player/Pemegang2.png" type="Texture" id=8]
+[ext_resource path="res://Art/Player/Pemegang1.png" type="Texture" id=9]
 [ext_resource path="res://Scene/Trampoline.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Music/Jump.wav" type="AudioStream" id=11]
+[ext_resource path="res://Music/Coin.wav" type="AudioStream" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -20,14 +21,14 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "JalanKanan",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 2 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "JalanKiri",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "JalanKanan",
 "speed": 20.0
 } ]
 
@@ -39,14 +40,14 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "JalanKanan",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "JalanKiri",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "JalanKanan",
 "speed": 20.0
 } ]
 
@@ -61,7 +62,29 @@ height = 34.0097
 custom_solver_bias = 0.0
 extents = Vector2( 45.0213, 20.9577 )
 
-[node name="Player" type="KinematicBody2D"]
+[sub_resource type="StyleBoxLine" id=5]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+color = Color( 1, 1, 1, 1 )
+grow = 1.0
+thickness = 3
+vertical = false
+
+[sub_resource type="StyleBoxLine" id=6]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+color = Color( 0, 0, 0, 1 )
+grow = 1.0
+thickness = 3
+vertical = false
+
+[node name="Player" type="KinematicBody2D" index="0"]
 
 position = Vector2( 411, 313.001 )
 input_pickable = false
@@ -70,9 +93,6 @@ collision_mask = 24
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "collision" ]
-__meta__ = {
-"_edit_group_": true
-}
 RunSpeed = 200
 JumpSpeed = -400
 Gravity = 1200
@@ -115,6 +135,7 @@ position = Vector2( 0, -7 )
 
 [node name="PlayerArea" type="Area2D" parent="." index="5"]
 
+editor/display_folded = true
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -140,6 +161,57 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 _sections_unfolded = [ "Pause" ]
+
+[node name="Coin" type="AudioStreamPlayer2D" parent="." index="7"]
+
+stream = ExtResource( 12 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="PlayerGui" type="Node2D" parent="." index="8"]
+
+[node name="Stamina" type="ProgressBar" parent="PlayerGui" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -45.0
+margin_top = 26.0
+margin_right = 46.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+custom_styles/fg = SubResource( 5 )
+custom_styles/bg = SubResource( 6 )
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+percent_visible = false
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Pause", "Percent", "Rect", "Size Flags", "Visibility", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="BarStaminaAlpha" type="Tween" parent="PlayerGui" index="1"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+_sections_unfolded = [ "playback" ]
 
 [connection signal="area_entered" from="PlayerArea" to="." method="_on_PlayerArea_area_entered"]
 

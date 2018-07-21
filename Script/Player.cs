@@ -6,9 +6,15 @@ public class Player : KinematicBody2D
     [Export] public int RunSpeed = 200;
     [Export] public int JumpSpeed = -400;
     [Export] public int Gravity = 1200;
+    public float fillBar; 
+    public Color FullAlpha;
+    public Color ZeroAlpha;
 
     Vector2 velocity = new Vector2();
     AudioStreamPlayer JumpSound;
+    AudioStreamPlayer2D CoinSound;
+    ProgressBar stamina;
+    Tween BarStaminaAlpha;
 
     bool jumping = false;
     public int scorePlayerNode = 0;
@@ -22,23 +28,37 @@ public class Player : KinematicBody2D
     {
         animKiri = (AnimatedSprite) GetNode("KiriAnimatedSprite");
         animKanan = (AnimatedSprite) GetNode("KananAnimatedSprite");
-
         JumpSound = (AudioStreamPlayer) GetNode("Jump");
+        CoinSound = (AudioStreamPlayer2D) GetNode("Coin");
+        stamina = (ProgressBar) GetNode("PlayerGui/Stamina");
+        BarStaminaAlpha = (Tween) GetNode("PlayerGui/BarStaminaAlpha");
+        
+
+        FullAlpha = new Color(1.0f,1.0f,1.0f,1.0f);
+        ZeroAlpha = new Color(1.0f,1.0f,1.0f,.0f);
+
+
+        BarStaminaAlpha.InterpolateProperty(stamina, ":modulate", stamina.GetModulate(), ZeroAlpha, 2.0f, Tween.TransitionType.Quart, Tween.EaseType.Out);
+        BarStaminaAlpha.Start();
+
+        
 
     }
 
-    // public override void _Process(float delta)
-    // {
+    public override void _Process(float delta)
+    {
+        fillBar += delta * 10;
+        stamina.SetValue(fillBar);
+    }
 
-    // }
 
-
-    public void getInput()
+    public void getInput(float delta)
     {
         velocity.x = 0;
         bool right = Input.IsActionPressed("ui_right");
         bool left = Input.IsActionPressed("ui_left");
         bool jump = Input.IsActionPressed("ui_jump");
+        bool boost = Input.IsActionPressed("Boost");
 
         if (jump && IsOnFloor())
         {
@@ -46,7 +66,20 @@ public class Player : KinematicBody2D
             jumping = true;
             velocity.y = JumpSpeed;
             JumpSound.Play();
-        }
+            fillBar -= 15;
+            BarStaminaAlpha.RemoveAll();
+            BarStaminaAlpha.InterpolateProperty(stamina, ":modulate", stamina.GetModulate(), FullAlpha, 2.0f, Tween.TransitionType.Quart, Tween.EaseType.Out);
+            BarStaminaAlpha.Start();
+            
+        }else
+            {
+                if(stamina.Value >= 50)
+                {
+                    BarStaminaAlpha.RemoveAll();
+                    BarStaminaAlpha.InterpolateProperty(stamina, ":modulate", stamina.GetModulate(), ZeroAlpha, 4.0f, Tween.TransitionType.Quart, Tween.EaseType.Out);
+                    BarStaminaAlpha.Start();
+                }   
+            }
 
         if (right)
         {
@@ -82,11 +115,34 @@ public class Player : KinematicBody2D
                 animKanan.Play("default");
                 animKiri.Play("default");
             }
+        
+        if(boost && fillBar >= 1)
+        {
+            BarStaminaAlpha.RemoveAll();
+            RunSpeed = 350;
+            fillBar -= delta * 50;
+            BarStaminaAlpha.InterpolateProperty(stamina, ":modulate", stamina.GetModulate(), FullAlpha, 2.0f, Tween.TransitionType.Quart, Tween.EaseType.Out);
+            BarStaminaAlpha.Start();
+
+            
+            
+        }else
+            {   
+                RunSpeed = 200;
+                if(stamina.Value >= 50)
+                {
+                    BarStaminaAlpha.RemoveAll();
+                    BarStaminaAlpha.InterpolateProperty(stamina, ":modulate", stamina.GetModulate(), ZeroAlpha, 4.0f, Tween.TransitionType.Quart, Tween.EaseType.Out);
+                    BarStaminaAlpha.Start();
+                }
+                
+                
+            }
     }
 
     public override void _PhysicsProcess(float delta)
     {
-        getInput();
+        getInput(delta);
         velocity.y += Gravity * delta;
         if (jumping && IsOnFloor())
         {
@@ -100,6 +156,7 @@ public class Player : KinematicBody2D
         if(area.Name == "CoinArea")
         {
             scorePlayerNode += 1;
+            CoinSound.Play();
         }
     }
 
