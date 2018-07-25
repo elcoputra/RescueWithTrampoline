@@ -15,6 +15,8 @@ public class Player : KinematicBody2D
     AudioStreamPlayer2D CoinSound;
     ProgressBar stamina;
     Tween BarStaminaAlpha;
+    Timer partikelTimer;
+    PackedScene PartikelPutih;
 
     bool jumping = false;
     public int scorePlayerNode = 0;
@@ -41,14 +43,31 @@ public class Player : KinematicBody2D
         BarStaminaAlpha.InterpolateProperty(stamina, ":modulate", stamina.GetModulate(), ZeroAlpha, 2.0f, Tween.TransitionType.Quart, Tween.EaseType.Out);
         BarStaminaAlpha.Start();
 
+        //partikel putih yang akan di panggil
+        PartikelPutih = (PackedScene) ResourceLoader.Load("res://Scene/Partikel/PartickelPutih.tscn");
+
+        partikelTimer = (Timer) GetNode("Partikeltimer");
+        partikelTimer.SetWaitTime(0.5f);
+
+
+
+
+        
+
         
 
     }
 
     public override void _Process(float delta)
     {
-        fillBar += delta * 10;
-        stamina.SetValue(fillBar);
+        // GD.Print(stamina.Value);
+        // GD.Print(fillBar);
+        if(fillBar <= 100)
+        {
+            fillBar += delta * 10;
+            stamina.SetValue(fillBar);
+        }
+        
     }
 
 
@@ -60,7 +79,7 @@ public class Player : KinematicBody2D
         bool jump = Input.IsActionPressed("ui_jump");
         bool boost = Input.IsActionPressed("Boost");
 
-        if (jump && IsOnFloor())
+        if (jump && IsOnFloor() && fillBar > 15)
         {
 
             jumping = true;
@@ -87,6 +106,8 @@ public class Player : KinematicBody2D
             {
                 animKiri.Play("JalanKanan");
                 animKanan.Play("JalanKanan");
+                partikelTimer.SetWaitTime(0.5f);
+                PartikelMove();
             }else
                 {
                     animKanan.Play("default");
@@ -103,6 +124,8 @@ public class Player : KinematicBody2D
             {
                 animKanan.Play("JalanKiri");
                 animKiri.Play("JalanKiri");
+                PartikelMove();
+                
             }else
                 {
                     animKanan.Play("default");
@@ -116,7 +139,7 @@ public class Player : KinematicBody2D
                 animKiri.Play("default");
             }
         
-        if(boost && fillBar >= 1)
+        if(boost && fillBar > 0)
         {
             BarStaminaAlpha.RemoveAll();
             RunSpeed = 350;
@@ -132,7 +155,9 @@ public class Player : KinematicBody2D
                 if(stamina.Value >= 50)
                 {
                     BarStaminaAlpha.RemoveAll();
-                    BarStaminaAlpha.InterpolateProperty(stamina, ":modulate", stamina.GetModulate(), ZeroAlpha, 4.0f, Tween.TransitionType.Quart, Tween.EaseType.Out);
+                    BarStaminaAlpha.InterpolateProperty(stamina, ":modulate", 
+                                                        stamina.GetModulate(), ZeroAlpha, 4.0f, 
+                                                        Tween.TransitionType.Quart, Tween.EaseType.Out);
                     BarStaminaAlpha.Start();
                 }
                 
@@ -159,6 +184,31 @@ public class Player : KinematicBody2D
             CoinSound.Play();
         }
     }
+
+
+    public void PartikelMove()
+    {
+
+        
+        //Position2d
+        var posisiKanan = (Position2D) GetNode("kanan");
+        var posisiKiri = (Position2D) GetNode("Kiri");
+        //kanan
+        var partikelInstanceKanan = (Particles2D) PartikelPutih.Instance();
+        GetParent().AddChild(partikelInstanceKanan);
+        partikelInstanceKanan.SetPosition(posisiKanan.GetGlobalPosition());
+        partikelInstanceKanan.Emitting = true;
+
+        //kiri
+        var partikelInstanceKiri = (Particles2D) PartikelPutih.Instance();
+        GetParent().AddChild(partikelInstanceKiri);
+        partikelInstanceKiri.SetPosition(posisiKiri.GetGlobalPosition());
+        partikelInstanceKiri.Emitting = true;
+
+
+    }
+
+    
 
 
 }

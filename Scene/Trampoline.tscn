@@ -28,7 +28,7 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 26.8863, 10.7389 )
+extents = Vector2( 26.8863, 1.21945 )
 
 [sub_resource type="RectangleShape2D" id=3]
 
@@ -74,7 +74,7 @@ _sections_unfolded = [ "Collision", "Material", "Pickable", "Transform", "Visibi
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
 
-position = Vector2( 1.00001, 7.60436 )
+position = Vector2( 1.00001, 1.60436 )
 rotation = 3.14159
 scale = Vector2( 1, 0.737654 )
 shape = SubResource( 2 )

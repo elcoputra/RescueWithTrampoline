@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Script/Barrel.cs" type="Script" id=1]
+[ext_resource path="res://Art/barrel/Barrel0.png" type="Texture" id=2]
+[ext_resource path="res://Art/barrel/Barrel1.png" type="Texture" id=3]
+[ext_resource path="res://Art/barrel/Barrel2.png" type="Texture" id=4]
+[ext_resource path="res://Art/barrel/Barrel3.png" type="Texture" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 8.99221
+
+[sub_resource type="CircleShape2D" id=3]
+
+custom_solver_bias = 0.0
+radius = 9.27778
+
+[node name="Barrel" type="KinematicBody2D" index="0"]
+
+position = Vector2( 757.77, 416.183 )
+scale = Vector2( 1.2, 1.2 )
+input_pickable = false
+collision_layer = 4096
+collision_mask = 16400
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Angular", "Applied Forces", "Collision", "Linear", "Pickable", "Transform", "collision" ]
+
+[node name="animBarrel" type="AnimatedSprite" parent="." index="0"]
+
+frames = SubResource( 1 )
+animation = "default"
+frame = 2
+playing = true
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+position = Vector2( 0.0352287, 6.27633 )
+shape = SubResource( 2 )
+
+[node name="AreaBarrel" type="Area2D" parent="." index="2"]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4096
+collision_mask = 16896
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisonBarrel" type="CollisionShape2D" parent="AreaBarrel" index="0"]
+
+position = Vector2( 0, 6.30334 )
+shape = SubResource( 3 )
+
+[connection signal="area_entered" from="AreaBarrel" to="." method="_on_AreaBarrel_area_entered"]
+
+

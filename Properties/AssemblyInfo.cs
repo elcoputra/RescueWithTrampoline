@@ -4,11 +4,11 @@ using System.Reflection;
 // Change them to the values specific to your project.
 
 [assembly: AssemblyTitle("Rescue With Trampoline")]
-[assembly: AssemblyDescription("Game Menyelamatkan Orang Jatuh Dengan Trampolin")]
-[assembly: AssemblyConfiguration("64Bit")]
-[assembly: AssemblyCompany("KAKAKIKO")]
-[assembly: AssemblyProduct("Rescue With Trampoline")]
-[assembly: AssemblyCopyright("Copyright (c) 2018 Kakakio, Elco Iriansyah Putra")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

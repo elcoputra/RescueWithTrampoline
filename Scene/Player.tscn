@@ -84,7 +84,7 @@ grow = 1.0
 thickness = 3
 vertical = false
 
-[node name="Player" type="KinematicBody2D" index="0"]
+[node name="Player" type="KinematicBody2D"]
 
 position = Vector2( 411, 313.001 )
 input_pickable = false
@@ -175,16 +175,19 @@ area_mask = 1
 
 [node name="PlayerGui" type="Node2D" parent="." index="8"]
 
+editor/display_folded = true
+
 [node name="Stamina" type="ProgressBar" parent="PlayerGui" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -45.0
-margin_top = 26.0
-margin_right = 46.0
-margin_bottom = 32.0
+margin_left = -51.0
+margin_top = 23.0
+margin_right = -7.0
+margin_bottom = 29.0
+rect_rotation = -90.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -212,6 +215,23 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 _sections_unfolded = [ "playback" ]
+
+[node name="kanan" type="Position2D" parent="." index="9"]
+
+position = Vector2( 43.2443, 22.971 )
+scale = Vector2( 0.334571, 0.321852 )
+
+[node name="Kiri" type="Position2D" parent="." index="10"]
+
+position = Vector2( -42.0389, 23.2466 )
+scale = Vector2( 0.334571, 0.321852 )
+
+[node name="Partikeltimer" type="Timer" parent="." index="11"]
+
+process_mode = 1
+wait_time = 0.1
+one_shot = true
+autostart = false
 
 [connection signal="area_entered" from="PlayerArea" to="." method="_on_PlayerArea_area_entered"]
 

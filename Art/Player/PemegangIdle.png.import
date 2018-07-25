@@ -2,16 +2,17 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PemegangIdle.png-31fc00e974f2a9ab9e9f912500c1dd80.stex"
+path.s3tc="res://.import/PemegangIdle.png-31fc00e974f2a9ab9e9f912500c1dd80.s3tc.stex"
+path.etc2="res://.import/PemegangIdle.png-31fc00e974f2a9ab9e9f912500c1dd80.etc2.stex"
 
 [deps]
 
 source_file="res://Art/Player/PemegangIdle.png"
-dest_files=[ "res://.import/PemegangIdle.png-31fc00e974f2a9ab9e9f912500c1dd80.stex" ]
+dest_files=[ "res://.import/PemegangIdle.png-31fc00e974f2a9ab9e9f912500c1dd80.s3tc.stex", "res://.import/PemegangIdle.png-31fc00e974f2a9ab9e9f912500c1dd80.etc2.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0

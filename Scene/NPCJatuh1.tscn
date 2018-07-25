@@ -34,11 +34,11 @@ custom_solver_bias = 0.0
 radius = 8.0008
 height = 20.0
 
-[node name="NPCJatuh1" type="RigidBody2D" index="0"]
+[node name="NPCJatuh1" type="RigidBody2D"]
 
 input_pickable = false
 collision_layer = 2
-collision_mask = 98
+collision_mask = 8290
 mode = 0
 mass = 50.0
 friction = 1.0
@@ -66,7 +66,7 @@ rotation = 0.400152
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 1 )
 animation = "default"
-frame = 4
+frame = 3
 playing = true
 _sections_unfolded = [ "Transform" ]
 

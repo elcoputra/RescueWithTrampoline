@@ -50,9 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Script\Barrel.cs" />
     <Compile Include="Script\CaoinCollectable.cs" />
+    <Compile Include="Script\EnemySpawn.cs" />
     <Compile Include="Script\Main.cs" />
     <Compile Include="Script\NPCJatuh1.cs" />
+    <Compile Include="Script\PartickelPutih.cs" />
     <Compile Include="Script\Player.cs" />
     <Compile Include="Script\Trampoline.cs" />
   </ItemGroup>
