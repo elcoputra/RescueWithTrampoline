@@ -6,6 +6,10 @@ public class EnemySpawn : Node2D
     // Member variables here, example:
     // private int a = 2;
     // private string b = "textvar";
+
+    [Signal]
+    delegate void BarrelAddScoreToLabel();
+
     public PackedScene EnemyBarrel;
 
     private Random rand = new Random();
@@ -52,6 +56,7 @@ public class EnemySpawn : Node2D
         
         var EnemyBarrelInstance = (KinematicBody2D) EnemyBarrel.Instance();
         AddChild(EnemyBarrelInstance);
+        EnemyBarrelInstance.Connect("ScoreBarrel", this, "ScoreBarrelConnect");
         switch(direction)
         {
             case 0:
@@ -66,5 +71,9 @@ public class EnemySpawn : Node2D
         waitTimeSpawn = randrand(10,20);
         TimerSpawnKanan.SetWaitTime(waitTimeSpawn);
         TimerSpawnKanan.Start();
+    }
+    public void ScoreBarrelConnect()
+    {
+        EmitSignal(nameof(BarrelAddScoreToLabel));
     }
 }

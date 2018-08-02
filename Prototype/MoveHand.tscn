@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Prototype/MoveHand.cs" type="Script" id=1]
+[ext_resource path="res://Art/Penembak/TanganKanan.png" type="Texture" id=2]
+[ext_resource path="res://Art/Cosmetic/Partikle/Percikan2.png" type="Texture" id=3]
+[ext_resource path="res://Art/Penembak/TanganKiri.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [  ],
+"loop": false,
+"name": "Default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "Percik",
+"speed": 1.0
+} ]
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 68.0273, 55.7524 )
+
+[node name="MoveHand" type="KinematicBody2D"]
+
+position = Vector2( 351.967, 274.664 )
+scale = Vector2( 0.0832189, 0.0832189 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+
+[node name="PosisiRespawn" type="Position2D" parent="." index="0"]
+
+position = Vector2( 283.149, -15.6704 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Tangan" type="Sprite" parent="." index="1"]
+
+position = Vector2( 132.929, -6.48434 )
+scale = Vector2( 20, 20 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Offset", "Transform", "Z Index" ]
+
+[node name="Percikan" type="AnimatedSprite" parent="Tangan" index="0"]
+
+position = Vector2( 7.95213, -0.459419 )
+scale = Vector2( 0.483116, 0.483116 )
+frames = SubResource( 1 )
+animation = "Default"
+
+[node name="TanganKiri" type="Sprite" parent="." index="2"]
+
+position = Vector2( 92.9619, -12.6938 )
+scale = Vector2( 20, 20 )
+z_index = -5
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Offset", "Transform", "Z Index" ]
+
+[node name="areaFlip_y" type="Area2D" parent="." index="3"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 131072
+collision_mask = 65536
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areaFlip_y" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="TimerBulletKanan" type="Timer" parent="." index="4"]
+
+process_mode = 1
+wait_time = 0.2
+one_shot = true
+autostart = false
+
+[node name="TimerBulletKiri" type="Timer" parent="." index="5"]
+
+process_mode = 1
+wait_time = 0.2
+one_shot = true
+autostart = false
+
+[connection signal="area_entered" from="areaFlip_y" to="." method="_on_areaFlip_y_area_entered"]
+
+[connection signal="timeout" from="TimerBulletKanan" to="." method="_on_TimerBulletKanan_timeout"]
+
+[connection signal="timeout" from="TimerBulletKiri" to="." method="_on_TimerBulletKiri_timeout"]
+
+

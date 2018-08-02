@@ -1,7 +1,7 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://Script/Main.cs" type="Script" id=1]
-[ext_resource path="res://Scene/Barrel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Script/DataScore.cs" type="Script" id=2]
 [ext_resource path="res://Art/Cosmetic/Mountain.png" type="Texture" id=3]
 [ext_resource path="res://Scene/LabelCoin.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Art/Fonts/homespun.ttf" type="DynamicFontData" id=5]
@@ -14,16 +14,20 @@
 [ext_resource path="res://Scene/Platform.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scene/Cosmetic.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scene/Player.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Script/EnemySpawn.cs" type="Script" id=15]
-[ext_resource path="res://Scene/Ambulance/AmbulanceKiri.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Scene/Ambulance/AmbulanceKanan.tscn" type="PackedScene" id=17]
-[ext_resource path="res://Art/Cosmetic/MusicOnOff/Music0.png" type="Texture" id=18]
-[ext_resource path="res://Art/Cosmetic/MusicOnOff/Music1.png" type="Texture" id=19]
-[ext_resource path="res://Art/Cosmetic/Block2.png" type="Texture" id=20]
-[ext_resource path="res://Art/Cosmetic/Block.png" type="Texture" id=21]
-[ext_resource path="res://Music/elco-original-file-music.wav" type="AudioStream" id=22]
-[ext_resource path="res://Music/Komiku The weekly fair.wav" type="AudioStream" id=23]
-[ext_resource path="res://Music/GameOver.wav" type="AudioStream" id=24]
+[ext_resource path="res://Scene/Penembak/BadanPenembak.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Script/EnemySpawn.cs" type="Script" id=16]
+[ext_resource path="res://Scene/Ambulance/AmbulanceKiri.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scene/Ambulance/AmbulanceKanan.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Art/Cosmetic/MusicOnOff/Music0.png" type="Texture" id=19]
+[ext_resource path="res://Art/Cosmetic/MusicOnOff/Music1.png" type="Texture" id=20]
+[ext_resource path="res://Art/Cosmetic/Block2.png" type="Texture" id=21]
+[ext_resource path="res://Art/Cosmetic/Block.png" type="Texture" id=22]
+[ext_resource path="res://Art/Meteor/Meteor.png" type="Texture" id=23]
+[ext_resource path="res://Art/barrel/Barrel0.png" type="Texture" id=24]
+[ext_resource path="res://Art/Cosmetic/Coin/COIN06.png" type="Texture" id=25]
+[ext_resource path="res://Music/elco-original-file-music.wav" type="AudioStream" id=26]
+[ext_resource path="res://Music/Komiku The weekly fair.wav" type="AudioStream" id=27]
+[ext_resource path="res://Music/GameOver.wav" type="AudioStream" id=28]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -59,21 +63,26 @@ extents = Vector2( 200.5, 17 )
 [sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
+extents = Vector2( 21.9979, 22.0011 )
+
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
 extents = Vector2( 46.213, 23.769 )
 
-[sub_resource type="Curve2D" id=6]
+[sub_resource type="Curve2D" id=7]
 
 bake_interval = 5.0
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 722, -1, 0, 0, 0, 0, 60, 0 )
 }
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=8]
 
 custom_solver_bias = 0.0
 radius = 20.0
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=9]
 
 size = 10
 use_mipmaps = false
@@ -81,17 +90,9 @@ use_filter = false
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
 
-[sub_resource type="DynamicFont" id=9]
-
-size = 50
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 5 )
-_sections_unfolded = [ "Font", "Resource", "Settings" ]
-
 [sub_resource type="DynamicFont" id=10]
 
-size = 30
+size = 50
 use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 5 )
@@ -113,21 +114,29 @@ use_filter = false
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Font", "Resource", "Settings" ]
 
-[sub_resource type="SpriteFrames" id=13]
+[sub_resource type="DynamicFont" id=13]
+
+size = 30
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Font", "Resource", "Settings" ]
+
+[sub_resource type="SpriteFrames" id=14]
 
 animations = [ {
-"frames": [ ExtResource( 18 ) ],
+"frames": [ ExtResource( 19 ) ],
 "loop": true,
 "name": "On",
 "speed": 1.0
 }, {
-"frames": [ ExtResource( 19 ) ],
+"frames": [ ExtResource( 20 ) ],
 "loop": true,
 "name": "Off",
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=15]
 
 size = 12
 use_mipmaps = false
@@ -135,7 +144,7 @@ use_filter = false
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Font", "Resource", "Settings" ]
 
-[sub_resource type="DynamicFont" id=15]
+[sub_resource type="DynamicFont" id=16]
 
 size = 40
 use_mipmaps = false
@@ -143,7 +152,7 @@ use_filter = false
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
 
-[sub_resource type="DynamicFont" id=16]
+[sub_resource type="DynamicFont" id=17]
 
 size = 20
 use_mipmaps = false
@@ -151,7 +160,7 @@ use_filter = false
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
 
-[sub_resource type="DynamicFont" id=17]
+[sub_resource type="DynamicFont" id=18]
 
 size = 12
 use_mipmaps = false
@@ -159,36 +168,90 @@ use_filter = false
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
 
-[sub_resource type="DynamicFontData" id=18]
+[sub_resource type="DynamicFontData" id=19]
 
 hinting = 2
 font_path = "res://Art/Fonts/homespun.ttf"
 _sections_unfolded = [ "Resource" ]
 
-[sub_resource type="DynamicFont" id=19]
+[sub_resource type="DynamicFont" id=20]
 
 size = 30
 use_mipmaps = false
 use_filter = false
-font_data = SubResource( 18 )
+font_data = SubResource( 19 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Font/fallback", "Resource", "Settings" ]
+
+[sub_resource type="DynamicFont" id=21]
+
+size = 12
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
+
+[sub_resource type="DynamicFont" id=23]
+
+size = 20
+use_mipmaps = true
+use_filter = false
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
+
+[sub_resource type="DynamicFont" id=22]
+
+size = 12
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
+
+[sub_resource type="DynamicFont" id=24]
+
+size = 20
+use_mipmaps = true
+use_filter = false
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
+
+[sub_resource type="DynamicFont" id=26]
+
+size = 16
+use_mipmaps = true
+use_filter = false
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
+
+[sub_resource type="DynamicFont" id=27]
+
+size = 29
+use_mipmaps = true
+use_filter = false
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
 
 [node name="Main" type="Node2D"]
 
 position = Vector2( -1, 0 )
 script = ExtResource( 1 )
-_sections_unfolded = [ "Pause" ]
-npc = ExtResource( 2 )
+_sections_unfolded = [ "Pause", "Transform" ]
+npc = null
 
-[node name="Mountain" type="Sprite" parent="." index="0"]
+[node name="DataScore" type="Node2D" parent="." index="0"]
+
+position = Vector2( 177, 48 )
+script = ExtResource( 2 )
+
+[node name="Mountain" type="Sprite" parent="." index="1"]
 
 modulate = Color( 0.683594, 0.683594, 0.683594, 1 )
 position = Vector2( 380.003, 199.881 )
 scale = Vector2( 3.03126, 3.03126 )
+z_index = -10
 texture = ExtResource( 3 )
-_sections_unfolded = [ "Visibility" ]
+_sections_unfolded = [ "Visibility", "Z Index" ]
 
-[node name="GUI" type="Node2D" parent="." index="1"]
+[node name="GUI" type="Node2D" parent="." index="2"]
 
 editor/display_folded = true
 __meta__ = {
@@ -239,6 +302,7 @@ position = Vector2( 28, 58 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 2 )
 animation = "default"
+frame = 3
 playing = true
 _sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
 __meta__ = {
@@ -250,6 +314,7 @@ __meta__ = {
 scale = Vector2( 0.9, 0.9 )
 frames = SubResource( 3 )
 animation = "default"
+frame = 3
 playing = true
 _sections_unfolded = [ "Transform", "Visibility" ]
 
@@ -261,6 +326,7 @@ position = Vector2( 45, 58 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 2 )
 animation = "default"
+frame = 3
 playing = true
 _sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
 __meta__ = {
@@ -272,6 +338,7 @@ __meta__ = {
 scale = Vector2( 0.9, 0.9 )
 frames = SubResource( 3 )
 animation = "default"
+frame = 3
 playing = true
 _sections_unfolded = [ "Transform", "Visibility" ]
 
@@ -283,6 +350,7 @@ position = Vector2( 61, 58 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 2 )
 animation = "default"
+frame = 3
 playing = true
 _sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
 __meta__ = {
@@ -294,15 +362,17 @@ __meta__ = {
 scale = Vector2( 0.9, 0.9 )
 frames = SubResource( 3 )
 animation = "default"
+frame = 3
 playing = true
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="Platform" parent="." index="2" instance=ExtResource( 12 )]
+[node name="Platform" parent="." index="3" instance=ExtResource( 12 )]
 
 editor/display_folded = true
 
 [node name="LantaiLifeDetect" type="Area2D" parent="Platform" index="6"]
 
+editor/display_folded = true
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -318,9 +388,28 @@ _sections_unfolded = [ "Collision" ]
 
 shape = SubResource( 4 )
 
-[node name="Cosmetic" parent="." index="3" instance=ExtResource( 13 )]
+[node name="PosPenembakKanan" type="Area2D" parent="Platform" index="7"]
 
-[node name="Player" parent="." index="4" instance=ExtResource( 14 )]
+position = Vector2( 190.501, -26.4995 )
+scale = Vector2( 0.5, 0.5 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 65536
+collision_mask = 131072
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/PosPenembakKanan" index="0"]
+
+shape = SubResource( 5 )
+
+[node name="Cosmetic" parent="." index="4" instance=ExtResource( 13 )]
+
+[node name="Player" parent="." index="5" instance=ExtResource( 14 )]
 
 editor/display_folded = true
 position = Vector2( 379.787, 378.769 )
@@ -340,14 +429,31 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/MainCoinDetect" index="0"]
 
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
-[node name="NpcSpawn" type="Path2D" parent="." index="5"]
+[node name="Penembak" type="Node2D" parent="." index="6"]
+
+editor/display_folded = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="BadanPenembak" parent="Penembak" index="0" instance=ExtResource( 15 )]
+
+position = Vector2( 16, 380 )
+scale = Vector2( 1.5, 1.5 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+
+[node name="BadanPenembak2" parent="Penembak" index="1" instance=ExtResource( 15 )]
+
+position = Vector2( 756, 380 )
+scale = Vector2( 1.5, 1.5 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+
+[node name="NpcSpawn" type="Path2D" parent="." index="7"]
 
 editor/display_folded = true
 self_modulate = Color( 0.5, 0.6, 1, 0.7 )
 position = Vector2( 0, 1 )
-curve = SubResource( 6 )
+curve = SubResource( 7 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="NpcSpawnLocation" type="PathFollow2D" parent="NpcSpawn" index="0"]
@@ -363,9 +469,9 @@ loop = true
 lookahead = 100.0
 _sections_unfolded = [ "Transform" ]
 
-[node name="EnemySpawn" type="Node2D" parent="." index="6"]
+[node name="EnemySpawn" type="Node2D" parent="." index="8"]
 
-script = ExtResource( 15 )
+script = ExtResource( 16 )
 
 [node name="SpawnBarrelKanan" type="Position2D" parent="EnemySpawn" index="0"]
 
@@ -412,15 +518,16 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisonSpawnKiri" type="CollisionShape2D" parent="EnemySpawn/SpawnBarrelKiri/AreaSpawnKiri" index="0"]
 
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
-[node name="Ambulance" type="Node2D" parent="." index="7"]
+[node name="Ambulance" type="Node2D" parent="." index="9"]
 
 editor/display_folded = true
 
-[node name="AmbulanceKiri" parent="Ambulance" index="0" instance=ExtResource( 16 )]
+[node name="AmbulanceKiri" parent="Ambulance" index="0" instance=ExtResource( 17 )]
 
 position = Vector2( 336, 370 )
+frame = 1
 
 [node name="TweenAmbulanceKiri" type="Tween" parent="Ambulance/AmbulanceKiri" index="0"]
 
@@ -431,10 +538,10 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 
-[node name="AmbulanceKanan" parent="Ambulance" index="1" instance=ExtResource( 17 )]
+[node name="AmbulanceKanan" parent="Ambulance" index="1" instance=ExtResource( 18 )]
 
 position = Vector2( 436, 370 )
-frame = 2
+frame = 1
 
 [node name="TweenAmbulanceKanan" type="Tween" parent="Ambulance/AmbulanceKanan" index="0"]
 
@@ -445,10 +552,11 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 
-[node name="Menu" type="Node2D" parent="." index="8"]
+[node name="Menu" type="Node2D" parent="." index="10"]
 
 editor/display_folded = true
-_sections_unfolded = [ "Visibility" ]
+z_index = 10
+_sections_unfolded = [ "Visibility", "Z Index" ]
 
 [node name="MenuPanel" type="Panel" parent="Menu" index="0"]
 
@@ -485,7 +593,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 9 )
 text = "Made By KAKAKIKO (Elco Iiriansyah) With Godot Engine(C#)"
 percent_visible = 1.0
 lines_skipped = 0
@@ -508,7 +616,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
 text = "Rescue
 With
 Trampoline"
@@ -536,7 +644,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 11 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -566,7 +674,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -596,7 +704,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 13 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -614,7 +722,7 @@ __meta__ = {
 editor/display_folded = true
 position = Vector2( 726, 25 )
 scale = Vector2( 1.28125, 1.28125 )
-frames = SubResource( 13 )
+frames = SubResource( 14 )
 animation = "On"
 __meta__ = {
 "_edit_group_": true
@@ -636,7 +744,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 15 )
 text = "Music On"
 percent_visible = 1.0
 lines_skipped = 0
@@ -678,7 +786,7 @@ _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
 position = Vector2( 70, 215 )
 scale = Vector2( 7.1875, 13.5938 )
-texture = ExtResource( 20 )
+texture = ExtResource( 21 )
 
 [node name="Header" type="Label" parent="Menu/About" index="1"]
 
@@ -695,7 +803,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 16 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "About"
 align = 1
@@ -721,7 +829,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 17 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "KAKAKIKO(c)"
 align = 1
@@ -748,7 +856,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 17 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Programmer"
 align = 1
@@ -774,7 +882,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 18 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Elco Iriansyah"
 align = 1
@@ -801,7 +909,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 17 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Art"
 align = 1
@@ -827,7 +935,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 18 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Elco Iriansyah"
 align = 1
@@ -854,7 +962,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 17 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Music"
 align = 1
@@ -880,7 +988,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 18 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Elco - Intro"
 align = 1
@@ -906,7 +1014,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 18 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Komiku - The weekly fair"
 align = 1
@@ -926,9 +1034,8 @@ playback/repeat = false
 playback/speed = 1.0
 _sections_unfolded = [ "Pause", "playback" ]
 
-[node name="GameOver" type="Panel" parent="." index="9"]
+[node name="GameOver" type="Panel" parent="." index="11"]
 
-editor/display_folded = true
 visible = false
 self_modulate = Color( 0, 0, 0, 1 )
 anchor_left = 0.0
@@ -979,7 +1086,7 @@ __meta__ = {
 
 position = Vector2( 43, 16 )
 scale = Vector2( 2.71875, 2.71875 )
-texture = ExtResource( 21 )
+texture = ExtResource( 22 )
 
 [node name="Start2" type="Label" parent="GameOver/btn_startGameOver" index="1"]
 
@@ -995,7 +1102,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 20 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Start"
 align = 1
@@ -1034,7 +1141,7 @@ align = 1
 
 position = Vector2( 43, 16 )
 scale = Vector2( 2.71875, 2.71875 )
-texture = ExtResource( 21 )
+texture = ExtResource( 22 )
 
 [node name="Exit2" type="Label" parent="GameOver/btn_exitGameover" index="1"]
 
@@ -1050,7 +1157,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 20 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Exit"
 align = 1
@@ -1074,7 +1181,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 20 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Game Over"
 align = 1
@@ -1086,7 +1193,6 @@ _sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
 [node name="YourScore" type="Label" parent="GameOver" index="3"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1100,7 +1206,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 20 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Your Score"
 align = 1
@@ -1117,16 +1223,16 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = -4.0
-margin_top = 24.0
+margin_top = 78.0
 margin_right = 422.0
-margin_bottom = 56.0
+margin_bottom = 110.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 20 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "0"
 align = 1
@@ -1138,21 +1244,20 @@ _sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
 [node name="HighScore" type="Label" parent="GameOver" index="4"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 120.0
+margin_top = 181.0
 margin_right = 426.0
-margin_bottom = 152.0
+margin_bottom = 213.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 20 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "High Score"
 align = 1
@@ -1169,16 +1274,16 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = -4.0
-margin_top = 24.0
+margin_top = 30.0
 margin_right = 422.0
-margin_bottom = 56.0
+margin_bottom = 62.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 20 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "0"
 align = 1
@@ -1188,11 +1293,165 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
-[node name="MusicMenu" type="AudioStreamPlayer2D" parent="." index="10"]
+[node name="MeteorScore" type="Sprite" parent="GameOver" index="5"]
+
+position = Vector2( 154, 97 )
+texture = ExtResource( 23 )
+
+[node name="x" type="Label" parent="GameOver/MeteorScore" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 13.0
+margin_top = -4.0
+margin_right = 19.0
+margin_bottom = 9.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 21 )
+text = "X"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="ScoreMeteor" type="Label" parent="GameOver/MeteorScore" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 22.0
+margin_top = -8.0
+margin_right = 32.0
+margin_bottom = 12.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 23 )
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="BarrelScore" type="Sprite" parent="GameOver" index="6"]
+
+position = Vector2( 205, 93 )
+texture = ExtResource( 24 )
+
+[node name="x" type="Label" parent="GameOver/BarrelScore" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 12.0
+margin_right = 18.0
+margin_bottom = 13.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 22 )
+text = "X"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts", "custom_styles" ]
+
+[node name="ScoreBarrel" type="Label" parent="GameOver/BarrelScore" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 20.0
+margin_top = -4.0
+margin_right = 30.0
+margin_bottom = 16.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 24 )
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts", "custom_styles" ]
+
+[node name="CoinScore" type="Sprite" parent="GameOver" index="7"]
+
+position = Vector2( 250.33, 97.6703 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 25 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="x" type="Label" parent="GameOver/CoinScore" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 18.0
+margin_top = -7.0
+margin_right = 28.0
+margin_bottom = 13.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 26 )
+text = "X"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts", "custom_styles" ]
+
+[node name="ScoreCoin" type="Label" parent="GameOver/CoinScore" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 30.0
+margin_top = -15.0
+margin_right = 45.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 27 )
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts", "custom_styles" ]
+
+[node name="MusicMenu" type="AudioStreamPlayer2D" parent="." index="12"]
 
 position = Vector2( 384, 183 )
-stream = ExtResource( 22 )
-volume_db = -5.0
+stream = ExtResource( 26 )
+volume_db = -10.0
 pitch_scale = 1.0
 autoplay = false
 max_distance = 2000.0
@@ -1200,10 +1459,10 @@ attenuation = 1.0
 bus = "Master"
 area_mask = 1
 
-[node name="MusicPlay" type="AudioStreamPlayer2D" parent="." index="11"]
+[node name="MusicPlay" type="AudioStreamPlayer2D" parent="." index="13"]
 
 position = Vector2( 381, 195 )
-stream = ExtResource( 23 )
+stream = ExtResource( 27 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -1212,10 +1471,10 @@ attenuation = 1.0
 bus = "Master"
 area_mask = 1
 
-[node name="MusicGameOver" type="AudioStreamPlayer2D" parent="." index="12"]
+[node name="MusicGameOver" type="AudioStreamPlayer2D" parent="." index="14"]
 
 position = Vector2( 386, 225 )
-stream = ExtResource( 24 )
+stream = ExtResource( 28 )
 volume_db = -10.0
 pitch_scale = 1.0
 autoplay = false
@@ -1225,18 +1484,18 @@ bus = "Master"
 area_mask = 1
 _sections_unfolded = [ "Pause", "Transform" ]
 
-[node name="NpcTimer" type="Timer" parent="." index="13"]
+[node name="NpcTimer" type="Timer" parent="." index="15"]
 
 process_mode = 1
 wait_time = 6.0
 one_shot = false
 autostart = false
 
-[node name="MeteorTimer" type="Timer" parent="." index="14"]
+[node name="MeteorTimer" type="Timer" parent="." index="16"]
 
 process_mode = 1
 wait_time = 1.0
-one_shot = false
+one_shot = true
 autostart = false
 
 [connection signal="area_entered" from="Platform/LantaiLifeDetect" to="." method="_on_LantaiLifeDetect_area_entered"]

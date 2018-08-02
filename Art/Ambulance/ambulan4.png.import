@@ -2,16 +2,17 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ambulan4.png-0d5378c1eb506a2665614502e45a9495.stex"
+path.s3tc="res://.import/ambulan4.png-0d5378c1eb506a2665614502e45a9495.s3tc.stex"
+path.etc2="res://.import/ambulan4.png-0d5378c1eb506a2665614502e45a9495.etc2.stex"
 
 [deps]
 
 source_file="res://Art/Ambulance/ambulan4.png"
-dest_files=[ "res://.import/ambulan4.png-0d5378c1eb506a2665614502e45a9495.stex" ]
+dest_files=[ "res://.import/ambulan4.png-0d5378c1eb506a2665614502e45a9495.s3tc.stex", "res://.import/ambulan4.png-0d5378c1eb506a2665614502e45a9495.etc2.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0

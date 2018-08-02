@@ -3,12 +3,12 @@
 [ext_resource path="res://Script/Player.cs" type="Script" id=1]
 [ext_resource path="res://Art/Player/Pemegang0.png" type="Texture" id=2]
 [ext_resource path="res://Art/Player/PemegangIdle.png" type="Texture" id=3]
-[ext_resource path="res://Art/Player/Pemegang6.png" type="Texture" id=4]
-[ext_resource path="res://Art/Player/Pemegang5.png" type="Texture" id=5]
-[ext_resource path="res://Art/Player/Pemegang4.png" type="Texture" id=6]
-[ext_resource path="res://Art/Player/Pemegang3.png" type="Texture" id=7]
-[ext_resource path="res://Art/Player/Pemegang2.png" type="Texture" id=8]
-[ext_resource path="res://Art/Player/Pemegang1.png" type="Texture" id=9]
+[ext_resource path="res://Art/Player/Pemegang1.png" type="Texture" id=4]
+[ext_resource path="res://Art/Player/Pemegang2.png" type="Texture" id=5]
+[ext_resource path="res://Art/Player/Pemegang3.png" type="Texture" id=6]
+[ext_resource path="res://Art/Player/Pemegang4.png" type="Texture" id=7]
+[ext_resource path="res://Art/Player/Pemegang5.png" type="Texture" id=8]
+[ext_resource path="res://Art/Player/Pemegang6.png" type="Texture" id=9]
 [ext_resource path="res://Scene/Trampoline.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Music/Jump.wav" type="AudioStream" id=11]
 [ext_resource path="res://Music/Coin.wav" type="AudioStream" id=12]
@@ -21,14 +21,14 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "JalanKiri",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 2 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "JalanKanan",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "JalanKiri",
 "speed": 20.0
 } ]
 
@@ -40,14 +40,14 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "JalanKiri",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 2 ) ],
+"frames": [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "JalanKanan",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "JalanKiri",
 "speed": 20.0
 } ]
 
@@ -175,8 +175,6 @@ area_mask = 1
 
 [node name="PlayerGui" type="Node2D" parent="." index="8"]
 
-editor/display_folded = true
-
 [node name="Stamina" type="ProgressBar" parent="PlayerGui" index="0"]
 
 anchor_left = 0.0
@@ -234,5 +232,7 @@ one_shot = true
 autostart = false
 
 [connection signal="area_entered" from="PlayerArea" to="." method="_on_PlayerArea_area_entered"]
+
+[connection signal="timeout" from="Partikeltimer" to="." method="_on_Partikeltimer_timeout"]
 
 

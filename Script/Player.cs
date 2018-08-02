@@ -107,7 +107,11 @@ public class Player : KinematicBody2D
                 animKiri.Play("JalanKanan");
                 animKanan.Play("JalanKanan");
                 partikelTimer.SetWaitTime(0.5f);
-                PartikelMove();
+                if(partikelTimer.IsStopped())
+                {
+                    PartikelMove();
+                    RestartTimer();
+                }
             }else
                 {
                     animKanan.Play("default");
@@ -124,7 +128,11 @@ public class Player : KinematicBody2D
             {
                 animKanan.Play("JalanKiri");
                 animKiri.Play("JalanKiri");
-                PartikelMove();
+                if(partikelTimer.IsStopped())
+                {
+                    PartikelMove();
+                    RestartTimer();
+                }
                 
             }else
                 {
@@ -206,6 +214,18 @@ public class Player : KinematicBody2D
         partikelInstanceKiri.Emitting = true;
 
 
+    }
+
+
+    public void RestartTimer()
+    {
+        partikelTimer.SetWaitTime(.05f);
+        partikelTimer.SetOneShot(true);
+        partikelTimer.Start();
+    }
+    public void _on_Partikeltimer_timeout()
+    {
+        partikelTimer.IsStopped();
     }
 
     

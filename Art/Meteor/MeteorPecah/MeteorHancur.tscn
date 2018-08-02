@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Art/Meteor/MeteorPecah/Meteor2.png" type="Texture" id=1]
+[ext_resource path="res://Art/Meteor/MeteorPecah/Meteor3.png" type="Texture" id=2]
+[ext_resource path="res://Art/Meteor/MeteorPecah/Meteor4.png" type="Texture" id=3]
+[ext_resource path="res://Art/Meteor/MeteorPecah/MeteorHancur.cs" type="Script" id=4]
+[ext_resource path="res://Music/MeteorHancur.wav" type="AudioStream" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="MeteorHancur" type="AnimatedSprite"]
+
+scale = Vector2( 1.5, 1.5 )
+frames = SubResource( 1 )
+animation = "default"
+frame = 2
+script = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeteorPecahAudio" type="AudioStreamPlayer" parent="." index="0"]
+
+stream = ExtResource( 5 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+mix_target = 0
+bus = "Master"
+
+[connection signal="finished" from="MeteorPecahAudio" to="." method="_on_MeteorPecahAudio_finished"]
+
+

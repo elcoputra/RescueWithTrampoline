@@ -6,12 +6,19 @@ public class Main : Node2D
     [Export] 
     public PackedScene npc;
     public PackedScene meteor;
+    [Signal]
+    public delegate void DataScoreMeteorData();
     public int score;
+    public int ScoreCoin;
+    public int ScoreCoinFinal;
+    public int ScoreMeteorFinal;
+    public int ScoreBarrelFinal;
     public int minusNyawa;
     public int StatusmusicOn;
     public int menuAboutStatus = 0;
     public int speedMenuAbput = 100;
     public int MeteorTimerRandom;
+    public int wavestat = 1;
     int Menuopen = 0;
     
 
@@ -58,13 +65,14 @@ public class Main : Node2D
         MeteorTimer = (Timer) GetNode("MeteorTimer");
 
 
+        
 
         player.Visible = false;    
     }
 
     public override void _Process(float delta)
     {
-        GD.Print(MeteorTimer.WaitTime);
+        // GD.Print(MeteorTimer.WaitTime);
         wave();
         if(minusNyawa >= 3)
         {
@@ -86,6 +94,23 @@ public class Main : Node2D
             var guiLope3 = (AnimatedSprite) GetNode("GUI/life/life1");
             guiLope3.Visible = false;
         }
+
+        if (wavestat == 1)
+        {
+            MeteorTimer.SetWaitTime(RandMeteor(7f,10f));
+        }
+        if (wavestat == 2)
+        {
+            MeteorTimer.SetWaitTime(RandMeteor(7f,9f));
+        }
+        if (wavestat == 6)
+        {
+            MeteorTimer.SetWaitTime(RandMeteor(6f,8f));
+        }
+        if (wavestat == 9)
+        {
+            MeteorTimer.SetWaitTime(RandMeteor(5f,6f));
+        }
      
 
     }
@@ -94,7 +119,10 @@ public class Main : Node2D
     {
         return (float) (rand.NextDouble() * (max - min) + min);
     }
-
+    private float RandMeteor(float min , float max)
+    {
+        return (float) (rand.NextDouble() * (max - min) + min);
+    }
     public void _on_NpcTimer_timeout()
     {
         NpcTimer.Start();
@@ -117,6 +145,8 @@ public class Main : Node2D
         //    NpcInstance.Rotation = direction;
 
         }
+
+
     }
 
 
@@ -132,6 +162,7 @@ public class Main : Node2D
             AddChild(meteorInstance);
 
             meteorInstance.Position = NpcSpawnLocation.Position;
+            meteorInstance.Connect("ScoreMeteor", this , "ScoreMeteorConnect");
         }
 
     }
@@ -140,67 +171,76 @@ public class Main : Node2D
     {
         if(area.Name == "CoinArea")
         {
-            score += 1;
+            ScoreCoin += 1;
             LabelCoin = (Label) GetNode("GUI/LabelCoin");
-            LabelCoin.Text = score.ToString();
+            LabelCoin.Text = ScoreCoin.ToString();
         }
         if(area.Name == "AreaBarrel")
         {
             minusNyawa += 1;
         }
-        GD.Print(area.Name);
+        // GD.Print(area.Name);
     }
 
     public void wave()
     {
-        switch(score)
+        switch(ScoreCoin)
         {
             case 5:
             NpcTimer.WaitTime = 5.5f;
             WaveLabel.Text = "Wave 2 - Just Trying";
-            MeteorTimer.SetWaitTime(rand.Next(4,6));
+            
+            wavestat = 2;
             break;
 
             case 20:
             NpcTimer.WaitTime = 5f;
             WaveLabel.Text = "Wave 3 - interested";
+            wavestat = 3;
             break;
 
             case 30:
             NpcTimer.WaitTime = 4.80f;
             WaveLabel.Text = "Wave 4 - Amateur";
+            wavestat = 4;
             break;
 
             case 40:
             NpcTimer.WaitTime = 4.50f;
             WaveLabel.Text = "Wave 5 - Keep Playing";
+            wavestat = 5;
             break;
 
             case 50:
             NpcTimer.WaitTime = 4.00f;
             WaveLabel.Text = "Wave 6 - Litle Pro";
-            MeteorTimer.SetWaitTime(rand.Next(3,5));
+            
+            wavestat = 6;
             break;
 
             case 70:
             NpcTimer.WaitTime = 3.00f;
             WaveLabel.Text = "Wave 7 - Semi Pro";
+            wavestat = 7;
             break;
 
             case 80:
             NpcTimer.WaitTime = 3.50f;
             WaveLabel.Text = "Wave 8 - Very Interested";
+            wavestat = 8;
             break;
 
             case 90:
             NpcTimer.WaitTime = 3.00f;
             WaveLabel.Text = "Wave 9 - Become A Pro";
-            MeteorTimer.SetWaitTime(rand.Next(2,4));
+            
+            wavestat = 9;
             break;
 
             case 100:
             NpcTimer.WaitTime = 2.5f;
             WaveLabel.Text = "Wave 10 - Pro";
+            wavestat = 10;
             break;
             
         }
@@ -226,8 +266,6 @@ public class Main : Node2D
         minusNyawa = 0;
         NpcTimer.Start();
         player.Visible = true;
-
-        MeteorTimer.SetWaitTime(rand.Next(4,6));
         MeteorTimer.Start();
 
         var menuGui = (Node2D) GetNode("Menu");
@@ -308,11 +346,32 @@ public class Main : Node2D
     public void GameOver()
     {      
         MusicPlay.Stop();
-        Label LabelYourScore = (Label) GetNode("GameOver/YourScore/YourScoreValue");
-        LabelYourScore.Text = score.ToString();
         player.Visible = false;
         NpcTimer.Stop();
         PanelGameOver.Visible = true;   
+        
+
+        var ScoreCoinLabel = (Label)GetNode("GameOver/CoinScore/ScoreCoin");
+        ScoreCoinLabel.Text = ScoreCoin.ToString();
+
+
+        // proses score
+
+        //dari autoload script DataScore
+        var DataScoreVaribale = (DataScore)GetNode("/root/DataScore");
+
+        //Pengolahan data
+        ScoreBarrelFinal = DataScoreVaribale.NilaiBarrel * 500;
+        ScoreMeteorFinal = DataScoreVaribale.NilaiMeteor * 500;
+        ScoreCoinFinal = ScoreCoin * 250;
+
+        score = ScoreBarrelFinal + ScoreMeteorFinal + ScoreCoinFinal;
+
+        Label LabelYourScore = (Label) GetNode("GameOver/YourScore/YourScoreValue");
+        LabelYourScore.Text = score.ToString();
+
+        
+
 
     }
 
@@ -370,5 +429,14 @@ public class Main : Node2D
 
         
     }
+           public void ScoreMeteorConnect()
+    {
+        // GD.Print("Connect Score Meteor Berhasil (main.cs)");
+        EmitSignal(nameof(DataScoreMeteorData));
+    }
+
+
+
+
    
 }

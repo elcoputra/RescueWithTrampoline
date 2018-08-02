@@ -21,7 +21,7 @@ curve = SubResource( 4 )
 min_value = 0.0
 max_value = 1.0
 bake_resolution = 100
-_data = [ Vector2( 0.000734927, 0.00585938 ), 0.0, -0.276257, 0, 0, Vector2( 0.995948, 0.285156 ), -4.66295, 0.0, 0, 0 ]
+_data = [ Vector2( 0.000734927, 0.489258 ), 0.0, -0.276257, 0, 0, Vector2( 0.994289, 0.0380859 ), -4.66295, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=2]
 
@@ -72,14 +72,16 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Angle", "Angular Velocity", "Animation", "Color", "Damping", "Emission Shape", "Flags", "Gravity", "Hue Variation", "Initial Velocity", "Linear Accel", "Orbit Velocity", "Radial Accel", "Resource", "Scale", "Spread", "Tangential Accel", "Trail" ]
 
-[node name="PartickelPutih" type="Particles2D" index="0"]
+[node name="PartickelPutih" type="Particles2D"]
 
+position = Vector2( 380, 395 )
+scale = Vector2( 0.5, 0.5 )
 emitting = false
 amount = 1
-lifetime = 1.0
+lifetime = 2.0
 one_shot = true
 preprocess = 0.0
-speed_scale = 1.0
+speed_scale = 3.0
 explosiveness = 0.0
 randomness = 0.0
 fixed_fps = 0

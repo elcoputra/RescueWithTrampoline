@@ -2,16 +2,17 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Percikan.png-0e3397b156a078678bfb4f81fab90166.stex"
+path.s3tc="res://.import/Percikan.png-0e3397b156a078678bfb4f81fab90166.s3tc.stex"
+path.etc2="res://.import/Percikan.png-0e3397b156a078678bfb4f81fab90166.etc2.stex"
 
 [deps]
 
 source_file="res://Art/Cosmetic/Partikle/Putih/Percikan.png"
-dest_files=[ "res://.import/Percikan.png-0e3397b156a078678bfb4f81fab90166.stex" ]
+dest_files=[ "res://.import/Percikan.png-0e3397b156a078678bfb4f81fab90166.s3tc.stex", "res://.import/Percikan.png-0e3397b156a078678bfb4f81fab90166.etc2.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0

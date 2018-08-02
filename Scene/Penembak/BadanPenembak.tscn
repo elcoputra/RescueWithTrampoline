@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Prototype/BadanPenembak.cs" type="Script" id=1]
+[ext_resource path="res://Art/Penembak/Penembak0.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 17.4256 )
+
+[node name="BadanPenembak" type="Node2D"]
+
+position = Vector2( 409.001, 195.001 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Badan" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Offset" ]
+
+[node name="PosisiTangan" type="Position2D" parent="." index="1"]
+
+position = Vector2( -0.419373, -4.68108 )
+scale = Vector2( 0.0806526, 0.0806526 )
+
+[node name="AreaBadanPenembak" type="Area2D" parent="." index="2"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 131072
+collision_mask = 65536
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaBadanPenembak" index="0"]
+
+shape = SubResource( 1 )
+
+[connection signal="area_entered" from="AreaBadanPenembak" to="." method="_on_AreaBadanPenembak_area_entered"]
+
+

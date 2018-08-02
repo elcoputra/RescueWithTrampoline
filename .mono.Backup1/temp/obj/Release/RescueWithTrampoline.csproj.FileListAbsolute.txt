@@ -1,6 +1,0 @@
-D:\Education\Project\Godot\PROJECT\RescueWithTrampoline\.mono\temp\bin\Release\RescueWithTrampoline.dll
-D:\Education\Project\Godot\PROJECT\RescueWithTrampoline\.mono\temp\bin\Release\RescueWithTrampoline.pdb
-D:\Education\Project\Godot\PROJECT\RescueWithTrampoline\.mono\temp\obj\Release\RescueWithTrampoline.csprojResolveAssemblyReference.cache
-D:\Education\Project\Godot\PROJECT\RescueWithTrampoline\.mono\temp\obj\Release\RescueWithTrampoline.csproj.CoreCompileInputs.cache
-D:\Education\Project\Godot\PROJECT\RescueWithTrampoline\.mono\temp\obj\Release\RescueWithTrampoline.dll
-D:\Education\Project\Godot\PROJECT\RescueWithTrampoline\.mono\temp\obj\Release\RescueWithTrampoline.pdb
